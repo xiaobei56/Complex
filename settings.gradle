@@ -1,0 +1,1 @@
+include ':app', ':BzbLibrary', ':testmodule', ':myapps', ':gametools'
