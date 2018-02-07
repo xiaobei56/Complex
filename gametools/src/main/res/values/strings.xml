@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GameTools</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="st_name">狼崽</string>
+    <string name="st_content">志愿成为终极狼王</string>
+    <string name="text_founction">功能</string>
+    <string name="text_setting_about">关于</string>
+    <string name="text_community">狼杀社区</string>
 </resources>

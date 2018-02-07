@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item android:title="@string/text_founction">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_assistant"
+                    android:icon="@drawable/nav_tools_selector"
+                    android:title="狼杀助手" />
+                <item
+                    android:id="@+id/nav_gallery"
+                    android:icon="@drawable/nav_face_to_face_selector"
+                    android:title="面杀神器" />
+                <item
+                    android:id="@+id/nav_slideshow"
+                    android:icon="@drawable/nav_net_game_selector"
+                    android:title="网杀工具" />
+                <item
+                    android:id="@+id/nav_manage"
+                    android:icon="@drawable/nav_commnuity_selector"
+                    android:title="@string/text_community" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="@string/text_setting_about">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="分享" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

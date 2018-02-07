@@ -4,8 +4,19 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="main_purple">#7722aa</color>
+    <color name="main_purple_dark">#6622aa</color>
     <color name="main_gray">#8a8a8a</color>
     <color name="transparent">#0fff</color>
     <color name="deep_transparent">#bb000000</color>
     <color name="yellow_deep">#F18459</color>
+
+
+    <color name="text_black">#333333</color>
+    <color name="text_white">#eeeeee</color>
+    <color name="text_grey">#999999</color>
+
+    <color name="back_grey">#cccccc</color>
+
+    <color name="transparent_20">#32ffffff</color>
+    <color name="transparent_50">#80ffffff</color>
 </resources>
