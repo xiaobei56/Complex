@@ -1,18 +1,17 @@
-package cn.gridlife.gametools.fragments;
+package cn.gridlife.gametools.fragments.navFunction;
 
-import android.app.Fragment;
 import android.view.View;
 
+import cn.gridlife.gametools.R;
 import cn.gridlife.generallibrary.fragments.BFragment;
 
 /**
- *
  * @author BZB
  * @date 2018/1/30
  * project Speach
  */
 
-public class FaceWkFragment extends BFragment {
+public class NetGamingWkFragment extends BFragment {
 
     /**
      * 第一次界面用户可见: 初始化View的数据
@@ -29,7 +28,10 @@ public class FaceWkFragment extends BFragment {
     protected void onUserVisible() {
 
     }
-
+    @Override
+    public String setTile() {
+        return "狼杀社区";
+    }
     /**
      * 当用户不可见时
      */
@@ -51,14 +53,14 @@ public class FaceWkFragment extends BFragment {
 
     @Override
     protected int getContentViewLayoutID() {
-        return 0;
+        return R.layout.fragment_main_net_wk;
     }
 
     /**
      * OnDestroy do something
      */
     @Override
-    protected void DetoryViewAndThing() {
+    protected void DestroyViewAndThing() {
 
     }
 }

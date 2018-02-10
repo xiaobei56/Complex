@@ -17,7 +17,6 @@ public abstract class BActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-
         initData();
         initView();
     }

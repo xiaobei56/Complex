@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
-    <item android:title="@string/text_founction">
+    <item android:title="@string/text_founction"
+        android:titleCondensed="@string/st_content"
+        >
         <menu>
             <group android:checkableBehavior="single">
                 <item
@@ -10,15 +13,15 @@
                     android:icon="@drawable/nav_tools_selector"
                     android:title="狼杀助手" />
                 <item
-                    android:id="@+id/nav_gallery"
+                    android:id="@+id/nav_face_to_face"
                     android:icon="@drawable/nav_face_to_face_selector"
                     android:title="面杀神器" />
                 <item
-                    android:id="@+id/nav_slideshow"
+                    android:id="@+id/nav_net_game"
                     android:icon="@drawable/nav_net_game_selector"
                     android:title="网杀工具" />
                 <item
-                    android:id="@+id/nav_manage"
+                    android:id="@+id/nav_community"
                     android:icon="@drawable/nav_commnuity_selector"
                     android:title="@string/text_community" />
             </group>

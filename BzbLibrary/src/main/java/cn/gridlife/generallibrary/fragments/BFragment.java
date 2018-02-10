@@ -1,16 +1,17 @@
 package cn.gridlife.generallibrary.fragments;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
+import cn.gridlife.generallibrary.R;
 
 /**
  * Created by BZB on 2018/1/30.
@@ -21,6 +22,7 @@ import butterknife.ButterKnife;
  * v4包中的Fragment在Activity的布局中是可以使用<fragment>标签的
  */
 public abstract class BFragment extends Fragment {
+
     /**
      * 是否是第一次可见
      */
@@ -34,13 +36,16 @@ public abstract class BFragment extends Fragment {
      */
     private boolean isPrepared = false;
     protected String TAG;
-    private Activity currentActivity;
+    protected Activity currentActivity;
+
+    public abstract String setTile();
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         TAG = this.getClass().getSimpleName();
         currentActivity = (Activity) context;
+        ((Activity) context).getActionBar().setTitle(setTile());
     }
 
     @Override
@@ -100,7 +105,7 @@ public abstract class BFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        DetoryViewAndThing();
+        DestroyViewAndThing();
         super.onDestroy();
     }
 
@@ -187,7 +192,7 @@ public abstract class BFragment extends Fragment {
     /**
      * OnDestroy do something
      */
-    protected abstract void DetoryViewAndThing();
+    protected abstract void DestroyViewAndThing();
 
     /**
      * 打开一个Activity 默认 不关闭当前activity

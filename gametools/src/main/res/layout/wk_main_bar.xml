@@ -18,5 +18,8 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/fragment_main_tool" />
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>
