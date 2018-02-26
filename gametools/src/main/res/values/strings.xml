@@ -8,4 +8,10 @@
     <string name="text_setting_about">关于</string>
     <string name="text_community">狼杀社区</string>
     <string name="text_history">历史</string>
+    <string name="text_wk_community">狼杀社区</string>
+    <string name="text_wk_assistant">狼杀助手</string>
+    <string name="text_wk_face_to_face">面杀神器</string>
+    <string name="text_wk_net_game">网杀工具</string>
+    <string name="text_new_game">新局</string>
+    <string name="text_strategy">攻略</string>
 </resources>

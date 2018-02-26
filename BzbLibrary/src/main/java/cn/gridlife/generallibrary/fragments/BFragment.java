@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,21 +37,28 @@ public abstract class BFragment extends Fragment {
      */
     private boolean isPrepared = false;
     protected String TAG;
-    protected Activity currentActivity;
+    protected FragmentActivity currentActivity;
 
-    public abstract String setTile();
+    private String title;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         TAG = this.getClass().getSimpleName();
-        currentActivity = (Activity) context;
-        ((Activity) context).getActionBar().setTitle(setTile());
+        currentActivity = (FragmentActivity) context;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Nullable
@@ -67,7 +75,7 @@ public abstract class BFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+//        ButterKnife.bind(this, view);
         initViewsAndEvents(view);
 
     }

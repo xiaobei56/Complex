@@ -1,6 +1,5 @@
 package cn.gridlife.gametools.fragments.navFunction;
 
-import android.app.Fragment;
 import android.view.View;
 
 import cn.gridlife.gametools.R;
@@ -38,10 +37,6 @@ public class FaceWkFragment extends BFragment {
     protected void onUserInvisible() {
 
     }
-    @Override
-    public String setTile() {
-        return "狼杀社区";
-    }
     /**
      * 初始化View 及 Event
      * onViewCreated
@@ -55,7 +50,7 @@ public class FaceWkFragment extends BFragment {
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.fragment_main_face_wk;
+        return R.layout.main_fragment_face_wk;
     }
 
     /**

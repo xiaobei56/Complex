@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -23,13 +24,14 @@ import cn.gridlife.gametools.fragments.navFunction.CommunityWkFragment;
 import cn.gridlife.gametools.fragments.navFunction.FaceWkFragment;
 import cn.gridlife.gametools.fragments.navFunction.NetGamingWkFragment;
 import cn.gridlife.generallibrary.activities.BActivity;
+import cn.gridlife.generallibrary.activities.BFragmentActivity;
 
 /**
  * MainActivity
  *
  * @author BZB
  */
-public class MainActivity extends BActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BFragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.nv_main)
     NavigationView navigationView;
     @BindView(R.id.toolbar)
@@ -43,6 +45,7 @@ public class MainActivity extends BActivity implements NavigationView.OnNavigati
     private FaceWkFragment faceWkFragment = new FaceWkFragment();
     private NetGamingWkFragment netGamingWkFragment = new NetGamingWkFragment();
     private Fragment currentFragment = new Fragment();
+    private TextView tvTitle;
 
     @Override
     public int getLayoutId() {
@@ -63,6 +66,8 @@ public class MainActivity extends BActivity implements NavigationView.OnNavigati
     @Override
     protected void initView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        tvTitle = (TextView) findViewById(R.id.tv_title);
         setSupportActionBar(toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nv_main);
@@ -108,8 +113,15 @@ public class MainActivity extends BActivity implements NavigationView.OnNavigati
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_assistant);
         switchFragment(assistantWkFragment).commit();
+        setTitle(getString(R.string.text_wk_assistant));
+
     }
 
+    protected void setTitle(String str) {
+        if (tvTitle == null)
+            tvTitle = (TextView) findViewById(R.id.tv_title);
+        tvTitle.setText(str == null ? "" : str);
+    }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
@@ -150,18 +162,22 @@ public class MainActivity extends BActivity implements NavigationView.OnNavigati
             case R.id.nav_assistant:
                 //TODO
                 switchFragment(assistantWkFragment).commit();
+                setTitle(getString(R.string.text_wk_assistant));
                 break;
             case R.id.nav_face_to_face:
                 //TODO
                 switchFragment(faceWkFragment).commit();
+                setTitle(getString(R.string.text_wk_face_to_face));
                 break;
             case R.id.nav_net_game:
                 //TODO
                 switchFragment(netGamingWkFragment).commit();
+                setTitle(getString(R.string.text_wk_net_game));
                 break;
             case R.id.nav_community:
                 //TODO
                 switchFragment(communityWkFragment).commit();
+                setTitle(getString(R.string.text_wk_community));
                 break;
             case R.id.nav_share:
                 //TODO

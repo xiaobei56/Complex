@@ -11,18 +11,18 @@
                 <item
                     android:id="@+id/nav_assistant"
                     android:icon="@drawable/nav_tools_selector"
-                    android:title="狼杀助手" />
+                    android:title="@string/text_wk_assistant" />
                 <item
                     android:id="@+id/nav_face_to_face"
                     android:icon="@drawable/nav_face_to_face_selector"
-                    android:title="面杀神器" />
+                    android:title="@string/text_wk_face_to_face" />
                 <item
                     android:id="@+id/nav_net_game"
                     android:icon="@drawable/nav_net_game_selector"
-                    android:title="网杀工具" />
+                    android:title="@string/text_wk_net_game" />
                 <item
                     android:id="@+id/nav_community"
-                    android:icon="@drawable/nav_commnuity_selector"
+                    android:icon="@drawable/nav_community_selector"
                     android:title="@string/text_community" />
             </group>
         </menu>

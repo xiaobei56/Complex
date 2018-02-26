@@ -1,10 +1,23 @@
 package cn.gridlife.gametools.fragments.navFunction;
 
-import android.app.Activity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
+
+import java.util.ArrayList;
+
 import cn.gridlife.gametools.R;
+import cn.gridlife.gametools.entrys.TabEntity;
+import cn.gridlife.gametools.fragments.wkAssistance.HistoryFragment;
+import cn.gridlife.gametools.fragments.wkAssistance.NewGameFragment;
+import cn.gridlife.gametools.fragments.wkAssistance.StrategyFragment;
+import cn.gridlife.gametools.utils.ViewFindUtils;
 import cn.gridlife.generallibrary.fragments.BFragment;
 
 /**
@@ -14,21 +27,33 @@ import cn.gridlife.generallibrary.fragments.BFragment;
  */
 
 public class AssistantWkFragment extends BFragment {
-    Activity activity;
+    FragmentActivity activity;
+    private CommonTabLayout mTabLayout_3;
+    private View mDecorView;
+    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+
+    private String[] mTitles = {"历史","新局","攻略"};
+    private int[] mIconUnSelectIds = {R.drawable.ic_history, R.drawable.ic_new_game, R.drawable.ic_strategy};
+//    private int[] mIconUnSelectIds = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+    private int[] mIconSelectIds = {R.drawable.ic_history_selected, R.drawable.ic_new_game_selected, R.drawable.ic_strategy_selected};
+//    private int[] mIconSelectIds = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+    private ArrayList<Fragment> fragments = new ArrayList<>();
+    HistoryFragment historyFragment;
+    NewGameFragment newGameFragment;
+    StrategyFragment strategyFragment;
 
     /**
      * 第一次界面用户可见: 初始化View的数据
      */
     @Override
     protected void onFirstUserVisible() {
-        activity = super.currentActivity;
         Toast.makeText(activity, "onFirstUserVisible", Toast.LENGTH_SHORT).show();
-
+        Log.e(TAG + "AssistantWkFragment", "onFirstUserVisible: onFirstUserVisible");
     }
 
     @Override
-    public String setTile() {
-        return "狼杀助手";
+    public String getTitle() {
+        return getString(R.string.text_wk_assistant);
     }
 
     /**
@@ -37,6 +62,7 @@ public class AssistantWkFragment extends BFragment {
     @Override
     protected void onUserVisible() {
         Toast.makeText(activity, "onUserVisible", Toast.LENGTH_SHORT).show();
+        Log.e(TAG + "AssistantWkFragment", "onUserVisible: onUserVisible");
     }
 
     /**
@@ -55,12 +81,43 @@ public class AssistantWkFragment extends BFragment {
      */
     @Override
     protected void initViewsAndEvents(View view) {
+        activity = super.currentActivity;
 
+
+        historyFragment = new HistoryFragment();
+        newGameFragment = new NewGameFragment();
+        strategyFragment = new StrategyFragment();
+        fragments.add(historyFragment);
+        fragments.add(newGameFragment);
+        fragments.add(strategyFragment);
+
+        for (int i = 0; i < mTitles.length; i++) {
+            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnSelectIds[i]));
+        }
+
+        mDecorView = activity.getWindow().getDecorView();
+        /** with Fragments */
+        mTabLayout_3 = ViewFindUtils.find(mDecorView, R.id.tl_3);
+        mTabLayout_3 = view.findViewById(R.id.tl_3);
+        Toast.makeText(activity, "onFirstUserVisible", Toast.LENGTH_SHORT).show();
+        mTabLayout_3.setTabData(mTabEntities);
+        mTabLayout_3.setCurrentTab(1);
+        mTabLayout_3.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                Toast.makeText(activity, "onTabSelect", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+                Toast.makeText(activity, "onTabReselect", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.fragment_main_assistance;
+        return R.layout.main_fragment_assistance;
     }
 
     /**

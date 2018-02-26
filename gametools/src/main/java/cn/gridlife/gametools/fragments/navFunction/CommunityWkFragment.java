@@ -30,8 +30,8 @@ public class CommunityWkFragment extends BFragment {
     }
 
     @Override
-    public String setTile() {
-        return "狼杀社区";
+    public String getTitle() {
+        return getString(R.string.text_wk_community);
     }
 
     /**
@@ -55,7 +55,7 @@ public class CommunityWkFragment extends BFragment {
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.fragment_main_community;
+        return R.layout.main_fragment_community;
     }
 
     /**

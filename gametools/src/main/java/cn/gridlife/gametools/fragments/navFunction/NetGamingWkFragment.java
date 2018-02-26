@@ -28,10 +28,6 @@ public class NetGamingWkFragment extends BFragment {
     protected void onUserVisible() {
 
     }
-    @Override
-    public String setTile() {
-        return "狼杀社区";
-    }
     /**
      * 当用户不可见时
      */
@@ -53,7 +49,7 @@ public class NetGamingWkFragment extends BFragment {
 
     @Override
     protected int getContentViewLayoutID() {
-        return R.layout.fragment_main_net_wk;
+        return R.layout.main_fragment_net_wk;
     }
 
     /**
