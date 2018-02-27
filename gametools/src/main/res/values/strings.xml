@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">GameTools</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="st_name">狼崽</string>
+    <string name="st_content">志愿成为终极狼王</string>
+    <string name="text_founction">功能</string>
+    <string name="text_setting_about">关于</string>
+    <string name="text_community">狼杀社区</string>
+    <string name="text_history">历史</string>
+    <string name="text_wk_community">狼杀社区</string>
+    <string name="text_wk_assistant">狼杀助手</string>
+    <string name="text_wk_face_to_face">面杀神器</string>
+    <string name="text_wk_net_game">网杀工具</string>
+    <string name="text_new_game">新局</string>
+    <string name="text_strategy">攻略</string>
+    <string name="text_new_game_setting_title">开局设置</string>
+    <string name="text_module">板子:</string>
+    <string name="text_twelve_guard">12人守卫</string>
+    <string name="text_nine_normal">9人标准局</string>
+
+    <!--位置-->
+    <string name="text_local_1">1号</string>
+    <string name="text_local_2">2号</string>
+    <string name="text_local_3">3号</string>
+    <string name="text_local_4">4号</string>
+    <string name="text_local_5">5号</string>
+    <string name="text_local_6">6号</string>
+    <string name="text_local_7">7号</string>
+    <string name="text_local_8">8号</string>
+    <string name="text_local_9">9号</string>
+    <string name="text_local_10">10号</string>
+    <string name="text_local_11">11号</string>
+    <string name="text_local_12">12号</string>
+    <string name="text_new_game_strategy_title">本局套路</string>
+    <string name="text_local">位置:</string>
+    <string name="text_identity">身份:</string>
+    <string name="text_stategy">策略:</string>
+    <string name="text_start">开局</string>
+
+    <!--身份-->
+    <string name="identify_civil">平民</string>
+    <string name="identify_wave">狼</string>
+    <string name="identify_prophet">预言家</string>
+    <string name="identify_witch">女巫</string>
+    <string name="identify_guard">守卫</string>
+    <string name="identify_hunter">猎人</string>
 </resources>

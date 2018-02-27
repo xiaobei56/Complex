@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back"
+    android:fitsSystemWindows="true">
+
+    <!--<com.flyco.tablayout.SegmentTabLayout-->
+    <!--android:id="@+id/tl_2"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="36dp"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:paddingLeft="10dp"-->
+    <!--android:paddingRight="10dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--tl:tl_indicator_anim_enable="true"-->
+    <!--tl:tl_indicator_bounce_enable="false"-->
+    <!--tl:tl_indicator_color="#009688"-->
+    <!--tl:tl_tab_padding="20dp" />-->
+
+
+    <LinearLayout
+
+        android:id="@+id/ll_new_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/background_rounded_square"
+        android:elevation="5dp"
+
+        android:orientation="vertical"
+        android:padding="@dimen/margin"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="@string/text_new_game_setting_title"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/text_size_super_big" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/text_white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/text_module"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_big" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="2"
+                android:background="@drawable/background_square"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/text_twelve_guard"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_big" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/text_local"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_big" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="2"
+                android:background="@drawable/background_square"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/text_local_1"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_big" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/text_identity"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_big" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="2"
+                android:background="@drawable/background_square"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/text_twelve_guard"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_big" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/text_stategy"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_big" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="2"
+                android:background="@drawable/background_square"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="@string/text_twelve_guard"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_size_big" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/ripple_button"
+        android:clickable="true"
+        android:elevation="5dp"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/text_start"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/text_size_super_big"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_new_setting" />
+    <!--<com.flyco.tablayout.CommonTabLayout-->
+    <!--android:id="@+id/tl_3"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="#ffffff"-->
+    <!--android:paddingBottom="5dp"-->
+    <!--android:paddingTop="5dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--tl:tl_indicator_color="#2C97DE"-->
+    <!--tl:tl_textSelectColor="#2C97DE"-->
+    <!--tl:tl_textUnselectColor="#66000000"-->
+    <!--tl:tl_underline_color="#DDDDDD"-->
+    <!--tl:tl_underline_height="1dp" />-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_purple_think"
+        android:padding="1dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            style="@style/bottom_tab_style"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawableTop="@drawable/wk_assistance_history_selector"
+            android:text="@string/text_history"
+            android:textColor="@color/bottom_tab_text_color_selector"
+            android:textIsSelectable="false" />
+
+        <TextView
+            style="@style/bottom_tab_style"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawableTop="@drawable/wk_assistance_new_game_selector"
+            android:text="新局"
+            android:textColor="@color/bottom_tab_text_color_selector"
+            android:textIsSelectable="false" />
+
+        <TextView
+            style="@style/bottom_tab_style"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawableTop="@drawable/wk_assistance_strategy_selector"
+            android:text="攻略"
+            android:textColor="@color/bottom_tab_text_color_selector"
+            android:textIsSelectable="false" />
+    </LinearLayout>
+    <!--</android.support.v7.widget.CardView>-->
+</android.support.constraint.ConstraintLayout>
+
+
+
