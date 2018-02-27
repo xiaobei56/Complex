@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="main_purple">#7722aa</color>
     <color name="main_purple_dark">#6622aa</color>
+    <color name="main_purple_pink">#ad37d3</color>
     <color name="main_brown">#963000</color>
     <color name="main_gray">#8a8a8a</color>
 
@@ -12,9 +13,13 @@
     <color name="deep_transparent">#bb000000</color>
     <color name="yellow_deep">#F18459</color>
     <color name="white">#ffffff</color>
+    <color name="main_purple_think">#d2fff9</color>
 
     <color name="text_black">#333333</color>
     <color name="text_white">#eeeeee</color>
+    <color name="text_blue">#1699d3</color>
+    <color name="blue">#1699d3</color>
+    <color name="blue_clicked">#007cd3</color>
     <color name="text_grey">#999999</color>
 
     <color name="back_grey">#cccccc</color>

@@ -28,15 +28,13 @@ import cn.gridlife.generallibrary.fragments.BFragment;
 
 public class AssistantWkFragment extends BFragment {
     FragmentActivity activity;
-    private CommonTabLayout mTabLayout_3;
+//    private CommonTabLayout mTabLayout_3;
     private View mDecorView;
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 
     private String[] mTitles = {"历史","新局","攻略"};
     private int[] mIconUnSelectIds = {R.drawable.ic_history, R.drawable.ic_new_game, R.drawable.ic_strategy};
-//    private int[] mIconUnSelectIds = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
     private int[] mIconSelectIds = {R.drawable.ic_history_selected, R.drawable.ic_new_game_selected, R.drawable.ic_strategy_selected};
-//    private int[] mIconSelectIds = {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
     private ArrayList<Fragment> fragments = new ArrayList<>();
     HistoryFragment historyFragment;
     NewGameFragment newGameFragment;
@@ -91,28 +89,28 @@ public class AssistantWkFragment extends BFragment {
         fragments.add(newGameFragment);
         fragments.add(strategyFragment);
 
-        for (int i = 0; i < mTitles.length; i++) {
-            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnSelectIds[i]));
-        }
-
-        mDecorView = activity.getWindow().getDecorView();
-        /** with Fragments */
-        mTabLayout_3 = ViewFindUtils.find(mDecorView, R.id.tl_3);
-        mTabLayout_3 = view.findViewById(R.id.tl_3);
-        Toast.makeText(activity, "onFirstUserVisible", Toast.LENGTH_SHORT).show();
-        mTabLayout_3.setTabData(mTabEntities);
-        mTabLayout_3.setCurrentTab(1);
-        mTabLayout_3.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                Toast.makeText(activity, "onTabSelect", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onTabReselect(int position) {
-                Toast.makeText(activity, "onTabReselect", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        for (int i = 0; i < mTitles.length; i++) {
+//            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnSelectIds[i]));
+//        }
+//
+//        mDecorView = activity.getWindow().getDecorView();
+//        /** with Fragments */
+//        mTabLayout_3 = ViewFindUtils.find(mDecorView, R.id.tl_3);
+//        mTabLayout_3 = view.findViewById(R.id.tl_3);
+//        Toast.makeText(activity, "onFirstUserVisible", Toast.LENGTH_SHORT).show();
+//        mTabLayout_3.setTabData(mTabEntities);
+//        mTabLayout_3.setCurrentTab(1);
+//        mTabLayout_3.setOnTabSelectListener(new OnTabSelectListener() {
+//            @Override
+//            public void onTabSelect(int position) {
+//                Toast.makeText(activity, "onTabSelect", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onTabReselect(int position) {
+//                Toast.makeText(activity, "onTabReselect", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
