@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/me_bar"
+        android:fitsSystemWindows="true"
+        android:paddingBottom="@dimen/_30dp"
+        android:paddingLeft="@dimen/_15dp"
+        android:paddingTop="@dimen/_55dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_me_photo"
+            android:layout_width="@dimen/_60dp"
+            android:layout_height="@dimen/_60dp"
+            android:src="@mipmap/me_photo"
+            app:civ_border_color="#fff"
+            app:civ_border_overlay="false"
+            app:civ_border_width="0dp" />
+        <!--<de.hdodenhof.circleimageview.CircleImageView-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/profile_image"-->
+        <!--android:layout_width="96dp"-->
+        <!--android:layout_height="96dp"-->
+        <!--android:src="@drawable/profile"-->
+        <!--app:civ_border_width="2dp"-->
+        <!--app:civ_border_color="#FF000000"/>-->
+        <!--<ImageView-->
+        <!--android:id="@+id/iv_me_photo"-->
+        <!--android:layout_width="@dimen/_60dp"-->
+        <!--android:layout_height="@dimen/_60dp"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:src="@mipmap/me_photo" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_person_name"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/_15dp"-->
+            <!--android:maxLines="1"-->
+            <!--android:text="姓名"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="@dimen/text_size_big"-->
+            <!--app:layout_constraintBottom_toTopOf="@id/tv_person_address"-->
+            <!--app:layout_constraintLeft_toRightOf="@+id/iv_me_photo"-->
+            <!--app:layout_constraintTop_toTopOf="@id/iv_me_photo"-->
+            <!--/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_person_address"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/_3dp"-->
+            <!--android:layout_marginLeft="@dimen/_15dp"-->
+            <!--android:layout_marginTop="@dimen/_10dp"-->
+            <!--android:maxLines="1"-->
+            <!--android:text="住址"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="@dimen/text_normal"-->
+            <!--app:layout_constraintBottom_toBottomOf="@id/iv_me_photo"-->
+            <!--app:layout_constraintLeft_toRightOf="@+id/iv_me_photo"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/tv_person_name" />-->
+    </android.support.constraint.ConstraintLayout>
+
+    <!--<ScrollView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#f8f8f8"-->
+        <!--android:fadingEdge="none"-->
+        <!--android:overScrollMode="never"-->
+        <!--android:scrollbars="none">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rl_me_mark"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_50dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:clickable="true">-->
+
+                <!--<TextView-->
+                    <!--style="@style/me_function_text_style"-->
+                    <!--android:drawableLeft="@mipmap/me_mark"-->
+                    <!--android:text="test" />-->
+
+                <!--<ImageView-->
+                    <!--style="@style/me_function_arrow"-->
+                    <!--android:src="@mipmap/me_right_arrow" />-->
+
+                <!--<View style="@style/me_div_line" />-->
+            <!--</RelativeLayout>-->
+
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rl_me_password"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_50dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:clickable="true">-->
+
+                <!--<TextView-->
+                    <!--style="@style/me_function_text_style"-->
+                    <!--android:drawableLeft="@mipmap/me_password"-->
+                    <!--android:text="@string/me_password" />-->
+
+                <!--<ImageView-->
+                    <!--style="@style/me_function_arrow"-->
+                    <!--android:src="@mipmap/me_right_arrow" />-->
+
+                <!--<View style="@style/me_div_line" />-->
+            <!--</RelativeLayout>-->
+
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rl_font_size"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_50dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:clickable="true">-->
+
+                <!--<TextView-->
+                    <!--style="@style/me_function_text_style"-->
+                    <!--android:drawableLeft="@mipmap/me_font_size"-->
+                    <!--android:text="@string/me_font_size" />-->
+
+                <!--<ImageView-->
+                    <!--style="@style/me_function_arrow"-->
+                    <!--android:src="@mipmap/me_right_arrow" />-->
+            <!--</RelativeLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_10dp"-->
+                <!--android:background="@color/transparent" />-->
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rl_me_message_ring"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_50dp"-->
+                <!--android:background="@color/white">-->
+
+                <!--<TextView-->
+                    <!--style="@style/me_function_text_style"-->
+                    <!--android:drawableLeft="@mipmap/me_message"-->
+                    <!--android:text="@string/me_message_sound" />-->
+
+                <!--<CheckBox-->
+                    <!--android:id="@+id/cb_me_switcher_ring"-->
+                    <!--style="@style/me_function_arrow"-->
+                    <!--android:background="@drawable/switcher_selector"-->
+                    <!--android:button="@null"-->
+                    <!--android:checked="true" />-->
+
+                <!--<View style="@style/me_div_line" />-->
+            <!--</RelativeLayout>-->
+
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rlMeMessageVibration"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_50dp"-->
+                <!--android:background="@color/white">-->
+
+                <!--<TextView-->
+                    <!--style="@style/me_function_text_style"-->
+                    <!--android:drawableLeft="@mipmap/me_message_vibration"-->
+                    <!--android:text="@string/me_message_vibration" />-->
+
+                <!--<CheckBox-->
+                    <!--android:id="@+id/cb_me_switcher_vibration"-->
+                    <!--style="@style/me_function_arrow"-->
+                    <!--android:background="@drawable/switcher_selector"-->
+                    <!--android:button="@null"-->
+                    <!--android:checked="false" />-->
+            <!--</RelativeLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_10dp"-->
+                <!--android:background="@color/transparent" />-->
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rl_me_update"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_50dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:clickable="true">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_me_update"-->
+                    <!--style="@style/me_function_text_style"-->
+                    <!--android:drawableLeft="@mipmap/me_update"-->
+                    <!--android:text="@string/me_update" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_me_red_pot"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:layout_marginLeft="@dimen/_2dp"-->
+                    <!--android:layout_marginTop="@dimen/_16dp"-->
+                    <!--android:layout_toRightOf="@id/tv_me_update"-->
+                    <!--android:visibility="gone"-->
+                    <!--android:src="@mipmap/me_red_pot" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_me_version"-->
+                    <!--style="@style/me_function_arrow"-->
+                    <!--android:text="当前版本V:1"-->
+                    <!--android:textColor="#999999" />-->
+
+                <!--<View style="@style/me_div_line" />-->
+            <!--</RelativeLayout>-->
+
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rl_me_clear"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_50dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:clickable="true">-->
+
+                <!--<TextView-->
+                    <!--style="@style/me_function_text_style"-->
+                    <!--android:drawableLeft="@mipmap/me_clear"-->
+                    <!--android:text="@string/me_swipe_data" />-->
+
+                <!--<ImageView-->
+                    <!--style="@style/me_function_arrow"-->
+                    <!--android:src="@mipmap/me_right_arrow" />-->
+
+                <!--<View style="@style/me_div_line" />-->
+            <!--</RelativeLayout>-->
+
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rl_me_logout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/_50dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:clickable="true">-->
+
+                <!--<TextView-->
+                    <!--style="@style/me_function_text_style"-->
+                    <!--android:drawableLeft="@mipmap/me_logout"-->
+                    <!--android:text="@string/me_logout" />-->
+
+                <!--<ImageView-->
+                    <!--style="@style/me_function_arrow"-->
+                    <!--android:src="@mipmap/me_right_arrow" />-->
+            <!--</RelativeLayout>-->
+        <!--</LinearLayout>-->
+    <!--</ScrollView>-->
+</LinearLayout>

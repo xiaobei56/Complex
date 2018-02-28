@@ -5,5 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="grey">#666666</color>
     <color name="grey_trans">#99666666</color>
-    <color name="write">#eeeeee</color>
+    <color name="white">#eeeeee</color>
+    <color name="div_line">#E8E8E8</color>
 </resources>

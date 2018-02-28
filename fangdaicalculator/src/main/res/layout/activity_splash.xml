@@ -24,7 +24,7 @@
         android:paddingRight="10dp"
         android:paddingTop="5dp"
         android:text="跳过 (3s)"
-        android:textColor="@color/write"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintLeft_toLeftOf="parent"

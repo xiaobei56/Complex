@@ -36,8 +36,8 @@ public class MainActivity extends BActivity {
         communicateFragment = new CommunicateFragment();
         jingPinFragment = new JingPinFragment();
         fragments.add(calculatorFragment);
-        fragments.add(communicateFragment);
         fragments.add(jingPinFragment);
+        fragments.add(communicateFragment);
 
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnSelectIds[i]));
@@ -45,7 +45,7 @@ public class MainActivity extends BActivity {
 
         mDecorView = getWindow().getDecorView();
         mTabLayout_1 = ViewFindUtils.find(mDecorView, R.id.tl_1);
-        mTabLayout_1.setTabData(mTabEntities);
+        mTabLayout_1.setTabData(mTabEntities,this,R.id.fl_change,fragments);
         mTabLayout_1.setCurrentTab(0);
         mTabLayout_1.showDot(2);
         mTabLayout_1.setOnTabSelectListener(new OnTabSelectListener() {

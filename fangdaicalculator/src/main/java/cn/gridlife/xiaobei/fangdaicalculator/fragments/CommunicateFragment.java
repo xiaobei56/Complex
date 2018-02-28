@@ -3,6 +3,7 @@ package cn.gridlife.xiaobei.fangdaicalculator.fragments;
 import android.view.View;
 
 import cn.gridlife.generallibrary.fragments.BFragment;
+import cn.gridlife.xiaobei.fangdaicalculator.R;
 
 /**
  * Created by BZB on 2018/2/27.
@@ -31,7 +32,7 @@ public class CommunicateFragment extends BFragment {
 
     @Override
     protected int getContentViewLayoutID() {
-        return 0;
+        return R.layout.fragment_communicate;
     }
 
     @Override
