@@ -1,19 +1,64 @@
 package cn.gridlife.xiaobei.fangdaicalculator.activities;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.Toast;
+
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
+
+import java.util.ArrayList;
 
 import cn.gridlife.generallibrary.activities.BActivity;
 import cn.gridlife.xiaobei.fangdaicalculator.R;
+import cn.gridlife.xiaobei.fangdaicalculator.entrys.TabEntity;
+import cn.gridlife.xiaobei.fangdaicalculator.fragments.CalculatorFragment;
+import cn.gridlife.xiaobei.fangdaicalculator.fragments.CommunicateFragment;
+import cn.gridlife.xiaobei.fangdaicalculator.fragments.JingPinFragment;
+import cn.gridlife.xiaobei.fangdaicalculator.utils.ViewFindUtils;
 
 public class MainActivity extends BActivity {
-
+    private CommonTabLayout mTabLayout_1;
+    private View mDecorView;
+    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private String[] mTitles = {"计算", "精品", "交流"};
+    private int[] mIconUnSelectIds = {R.mipmap.ic_calculator, R.mipmap.ic_jingpin, R.mipmap.ic_communicate};
+    private int[] mIconSelectIds = {R.mipmap.ic_calculator_selected, R.mipmap.ic_jingpin_selected, R.mipmap.ic_communicate_selected};
+    private ArrayList<Fragment> fragments=new ArrayList<>();
+    private CalculatorFragment calculatorFragment;
+    private CommunicateFragment communicateFragment;
+    private JingPinFragment jingPinFragment;
 
     @Override
     protected void initData() {
-        private String[] mTitles = {"历史","新局","攻略"};
-        private int[] mIconUnSelectIds = {R.drawable.ic_history, R.drawable.ic_new_game, R.drawable.ic_strategy};
-        private int[] mIconSelectIds = {R.drawable.ic_history_selected, R.drawable.ic_new_game_selected, R.drawable.ic_strategy_selected};
+        calculatorFragment = new CalculatorFragment();
+        communicateFragment = new CommunicateFragment();
+        jingPinFragment = new JingPinFragment();
+        fragments.add(calculatorFragment);
+        fragments.add(communicateFragment);
+        fragments.add(jingPinFragment);
+
+        for (int i = 0; i < mTitles.length; i++) {
+            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnSelectIds[i]));
+        }
+
+        mDecorView = getWindow().getDecorView();
+        mTabLayout_1 = ViewFindUtils.find(mDecorView, R.id.tl_1);
+        mTabLayout_1.setTabData(mTabEntities);
+        mTabLayout_1.setCurrentTab(0);
+        mTabLayout_1.showDot(2);
+        mTabLayout_1.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                Toast.makeText(MainActivity.this, "onTabSelect", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+                Toast.makeText(MainActivity.this, "onTabReselect", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
