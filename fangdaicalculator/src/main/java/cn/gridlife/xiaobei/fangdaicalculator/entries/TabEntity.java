@@ -1,4 +1,4 @@
-package cn.gridlife.xiaobei.fangdaicalculator.entrys;
+package cn.gridlife.xiaobei.fangdaicalculator.entries;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 

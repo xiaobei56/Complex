@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import cn.gridlife.generallibrary.activities.BActivity;
 import cn.gridlife.xiaobei.fangdaicalculator.R;
-import cn.gridlife.xiaobei.fangdaicalculator.entrys.TabEntity;
+import cn.gridlife.xiaobei.fangdaicalculator.entries.TabEntity;
 import cn.gridlife.xiaobei.fangdaicalculator.fragments.CalculatorFragment;
 import cn.gridlife.xiaobei.fangdaicalculator.fragments.CommunicateFragment;
 import cn.gridlife.xiaobei.fangdaicalculator.fragments.JingPinFragment;
