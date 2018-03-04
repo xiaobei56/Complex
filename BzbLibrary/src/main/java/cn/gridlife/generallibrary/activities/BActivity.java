@@ -3,6 +3,8 @@ package cn.gridlife.generallibrary.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 
 import butterknife.ButterKnife;
 
@@ -13,9 +15,13 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BActivity extends AppCompatActivity {
+    boolean showTitle = true;
+    boolean showStatus = true;
+    boolean showTitleBar = true;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isFullScreen(isShowTitle(), isShowStatus(), isShowTitleBar());
         setContentView(getLayoutId());
         initData();
         initView();
@@ -26,6 +32,34 @@ public abstract class BActivity extends AppCompatActivity {
      */
     protected void BindButterKnife() {
         ButterKnife.bind(this);
+    }
+
+
+    public boolean isShowTitleBar() {
+        return showTitleBar;
+    }
+    public boolean isShowTitle() {
+        return showTitle;
+    }
+
+    public boolean isShowStatus() {
+        return showStatus;
+    }
+
+    protected void isFullScreen(boolean isShowTitle, boolean isShowStatus,boolean isShowTitleBar) {
+        if (!isShowTitle) {
+            //取消标题栏
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        }
+        if (!isShowStatus) {
+            //取消状态栏
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        if(!isShowTitleBar){
+            getSupportActionBar().hide();
+        }
     }
 
     /**
@@ -65,5 +99,6 @@ public abstract class BActivity extends AppCompatActivity {
      * @return LayoutID
      */
     public abstract int getLayoutId();
+
 
 }

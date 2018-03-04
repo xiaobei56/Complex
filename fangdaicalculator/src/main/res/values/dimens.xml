@@ -3,10 +3,17 @@
     <dimen name="_30dp">30dp</dimen>
     <dimen name="_15dp">15dp</dimen>
     <dimen name="_55dp">55dp</dimen>
-    <dimen name="text_normal">14</dimen>
     <dimen name="_3dp">3dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
     <dimen name="_10dp">10dp</dimen>
-    <dimen name="text_size_big">18</dimen>
+    <dimen name="_20dp">20dp</dimen>
     <dimen name="_50dp">50dp</dimen>
     <dimen name="_60dp">60dp</dimen>
+    <!--TextSize-->
+    <dimen name="text_size_mini">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_big">22sp</dimen>
+    <dimen name="text_size_max">26sp</dimen>
+
 </resources>

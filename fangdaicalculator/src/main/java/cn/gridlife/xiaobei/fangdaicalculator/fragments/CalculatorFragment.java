@@ -57,12 +57,13 @@ public class CalculatorFragment extends BFragment {
         recyclerView.setLayoutManager(new GridLayoutManager(currentActivity, 3));
         adapter = new CalculatorAdapter(R.layout.calculator_item, getItemDatas());
         recyclerView.setAdapter(adapter);
-//        adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-//            @Override
-//            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-//                Toast.makeText(currentActivity, "clicked", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Toast.makeText(currentActivity, position+"", Toast.LENGTH_SHORT).show();
+            }
+
+        });
     }
 
     @Override
@@ -77,9 +78,8 @@ public class CalculatorFragment extends BFragment {
 
     private List<CalculatorItem> getItemDatas() {
         itemDatas = new ArrayList<>();
-        CalculatorItem item = new CalculatorItem();
-        for (int i = 0; i < titles.length; i++
-                ) {
+        CalculatorItem item;
+        for (int i = 0; i < titles.length; i++) {
             item = new CalculatorItem();
             item.setTitle(titles[i]);
             item.setBitmap(bitmaps[i]);
