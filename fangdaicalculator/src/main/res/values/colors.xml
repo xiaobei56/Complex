@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#0099ff</color>
+    <color name="colorPrimaryDark">#ff9000</color>
+    <color name="colorAccent">#ff9000</color>
     <color name="grey">#666666</color>
     <color name="grey_trans">#99666666</color>
     <color name="white">#eeeeee</color>
     <color name="div_line">#E8E8E8</color>
 
+    <!--background Color-->
+    <color name="back_white">#fff</color>
+    <color name="back_tint">#eee</color>
+    <color name="back_tint_grey">#aaa</color>
+
+
+    <!--Main Color-->
+    <color name="main_blue">#0099ff</color>
+    <color name="main_origin">#ff9000</color>
+    <color name="main_beige">#ffc</color>
+
+    <!--Text Color-->
     <color name="text_color_normal">#333333</color>
+    <color name="text_color_grey">#666666</color>
+    <color name="text_color_white">#666666</color>
+    <color name="text_color_blue">#06f</color>
+
 </resources>

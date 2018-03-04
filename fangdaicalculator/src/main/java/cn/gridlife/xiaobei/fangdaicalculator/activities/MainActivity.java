@@ -3,6 +3,7 @@ package cn.gridlife.xiaobei.fangdaicalculator.activities;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -25,7 +26,7 @@ public class MainActivity extends BActivity {
     private String[] mTitles = {"计算", "精品", "交流"};
     private int[] mIconUnSelectIds = {R.mipmap.ic_calculator, R.mipmap.ic_jingpin, R.mipmap.ic_communicate};
     private int[] mIconSelectIds = {R.mipmap.ic_calculator_selected, R.mipmap.ic_jingpin_selected, R.mipmap.ic_communicate_selected};
-    private ArrayList<Fragment> fragments=new ArrayList<>();
+    private ArrayList<Fragment> fragments = new ArrayList<>();
     private CalculatorFragment calculatorFragment;
     private CommunicateFragment communicateFragment;
     private JingPinFragment jingPinFragment;
@@ -45,7 +46,7 @@ public class MainActivity extends BActivity {
 
         mDecorView = getWindow().getDecorView();
         mTabLayout_1 = ViewFindUtils.find(mDecorView, R.id.tl_1);
-        mTabLayout_1.setTabData(mTabEntities,this,R.id.fl_change,fragments);
+        mTabLayout_1.setTabData(mTabEntities, this, R.id.fl_change, fragments);
         mTabLayout_1.setCurrentTab(0);
         mTabLayout_1.showDot(2);
         mTabLayout_1.setOnTabSelectListener(new OnTabSelectListener() {
@@ -60,6 +61,7 @@ public class MainActivity extends BActivity {
             }
         });
     }
+
 
     @Override
     protected void initView() {

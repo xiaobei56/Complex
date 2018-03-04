@@ -23,19 +23,25 @@ public class SplashActivity extends BActivity {
     protected void initData() {
 
         tvTimer = (TextView) findViewById(R.id.tv_timer);
+
         CountDownTimer timer = new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                tvTimer.setText("跳转（" + (millisUntilFinished / 1000) + "s)");
+                tvTimer.setText("跳过（" + (millisUntilFinished / 1000) + "s)");
             }
 
             @Override
             public void onFinish() {
-                tvTimer.setText("跳转（" + 0 + "s)");
+
+                tvTimer.setText("跳过（" + 0 + "s)");
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
             }
         };
         timer.start();
+        tvTimer.setOnClickListener(v->{
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            timer.cancel();
+        });
     }
 
     @Override

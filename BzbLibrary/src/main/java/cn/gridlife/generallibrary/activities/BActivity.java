@@ -18,6 +18,7 @@ public abstract class BActivity extends AppCompatActivity {
     boolean showTitle = true;
     boolean showStatus = true;
     boolean showTitleBar = true;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public abstract class BActivity extends AppCompatActivity {
     public boolean isShowTitleBar() {
         return showTitleBar;
     }
+
     public boolean isShowTitle() {
         return showTitle;
     }
@@ -46,7 +48,7 @@ public abstract class BActivity extends AppCompatActivity {
         return showStatus;
     }
 
-    protected void isFullScreen(boolean isShowTitle, boolean isShowStatus,boolean isShowTitleBar) {
+    protected void isFullScreen(boolean isShowTitle, boolean isShowStatus, boolean isShowTitleBar) {
         if (!isShowTitle) {
             //取消标题栏
             requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -57,8 +59,9 @@ public abstract class BActivity extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
-        if(!isShowTitleBar){
-            getSupportActionBar().hide();
+        if (!isShowTitleBar) {
+            if (getSupportActionBar() != null)
+                getSupportActionBar().hide();
         }
     }
 

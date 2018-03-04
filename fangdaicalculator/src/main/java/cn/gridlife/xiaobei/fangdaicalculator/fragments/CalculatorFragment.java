@@ -1,5 +1,7 @@
 package cn.gridlife.xiaobei.fangdaicalculator.fragments;
 
+import android.app.FragmentManager;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -16,6 +18,7 @@ import java.util.List;
 
 import cn.gridlife.generallibrary.fragments.BFragment;
 import cn.gridlife.xiaobei.fangdaicalculator.R;
+import cn.gridlife.xiaobei.fangdaicalculator.activities.calculator.FangDaiCalculatorActivity;
 import cn.gridlife.xiaobei.fangdaicalculator.adapters.CalculatorAdapter;
 import cn.gridlife.xiaobei.fangdaicalculator.entries.CalculatorItem;
 
@@ -60,7 +63,10 @@ public class CalculatorFragment extends BFragment {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(currentActivity, position+"", Toast.LENGTH_SHORT).show();
+                switch (position) {
+                    case 0:
+                        startActivity(new Intent(currentActivity, FangDaiCalculatorActivity.class));
+                }
             }
 
         });
