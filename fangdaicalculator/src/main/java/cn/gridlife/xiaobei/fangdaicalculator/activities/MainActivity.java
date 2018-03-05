@@ -1,5 +1,7 @@
 package cn.gridlife.xiaobei.fangdaicalculator.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Toast;
@@ -62,6 +64,20 @@ public class MainActivity extends BActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("是否退出")
+                .setMessage("是否推出应用")
+                .setPositiveButton("退出", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MainActivity.this.finish();
+                    }
+                })
+                .show();
+    }
 
     @Override
     protected void initView() {

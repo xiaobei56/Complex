@@ -35,12 +35,14 @@ public class SplashActivity extends BActivity {
 
                 tvTimer.setText("跳过（" + 0 + "s)");
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                finish();
             }
         };
         timer.start();
         tvTimer.setOnClickListener(v->{
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
             timer.cancel();
+            finish();
         });
     }
 
