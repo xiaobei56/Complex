@@ -9,7 +9,7 @@
         android:id="@+id/cv_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/_3dp">
+        android:elevation="@dimen/base_dimen_6">
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
@@ -31,9 +31,9 @@
         android:id="@+id/tv_loan_method"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_3dp"
+        android:layout_margin="@dimen/base_dimen_6"
         android:background="@color/back_tint"
-        android:padding="@dimen/_3dp"
+        android:padding="@dimen/base_dimen_6"
         android:text="贷款方式："
         android:textColor="@color/text_color_blue"
         android:textSize="@dimen/text_size_sub_title"
@@ -45,11 +45,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:background="@color/back_white"
-        android:elevation="@dimen/_3dp"
+        android:elevation="@dimen/base_dimen_6"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/_3dp"
-        android:paddingTop="@dimen/_3dp"
+        android:paddingBottom="@dimen/base_dimen_6"
+        android:paddingTop="@dimen/base_dimen_6"
         app:layout_constraintTop_toBottomOf="@id/tv_loan_method">
 
         <RadioButton
@@ -66,18 +66,18 @@
             android:id="@+id/rb_loan_shangye"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5dp"
+            android:layout_margin="@dimen/base_dimen_10"
             android:layout_weight="1"
-            android:drawablePadding="@dimen/_3dp"
+            android:drawablePadding="@dimen/base_dimen_6"
             android:gravity="center"
             android:text="商业贷款"
             android:textSize="@dimen/text_size_normal" />
 
         <RadioButton
             android:id="@+id/rb_loan_zuhe"
-            android:layout_width="@dimen/_10dp"
+            android:layout_width="@dimen/base_dimen_20"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5dp"
+            android:layout_margin="@dimen/base_dimen_10"
             android:layout_weight="1"
             android:gravity="center"
             android:text="组合贷款"
@@ -94,9 +94,9 @@
         android:id="@+id/tv_calculator_method"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_3dp"
+        android:layout_margin="@dimen/base_dimen_6"
         android:background="@color/back_tint"
-        android:padding="@dimen/_3dp"
+        android:padding="@dimen/base_dimen_6"
         android:text="计算方式："
         android:textColor="@color/text_color_blue"
         android:textSize="@dimen/text_size_sub_title"
@@ -110,14 +110,14 @@
         android:background="@color/back_white"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/_3dp"
-        android:paddingTop="@dimen/_3dp"
+        android:paddingBottom="@dimen/base_dimen_6"
+        android:paddingTop="@dimen/base_dimen_6"
         app:layout_constraintTop_toBottomOf="@id/tv_calculator_method">
 
         <RadioButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5dp"
+            android:layout_margin="@dimen/base_dimen_10"
             android:layout_weight="1"
             android:checked="true"
             android:gravity="center"
@@ -127,17 +127,17 @@
         <RadioButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5dp"
+            android:layout_margin="@dimen/base_dimen_10"
             android:layout_weight="1"
-            android:drawablePadding="@dimen/_3dp"
+            android:drawablePadding="@dimen/base_dimen_6"
             android:gravity="center"
             android:text="按贷款总额"
             android:textSize="@dimen/text_size_normal" />
 
         <RadioButton
-            android:layout_width="@dimen/_10dp"
+            android:layout_width="@dimen/base_dimen_20"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5dp"
+            android:layout_margin="@dimen/base_dimen_10"
             android:layout_weight="1"
             android:gravity="center"
             android:text="按房屋面积"
@@ -154,9 +154,9 @@
         android:id="@+id/tv_repayment_method"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_3dp"
+        android:layout_margin="@dimen/base_dimen_6"
         android:background="@color/back_tint"
-        android:padding="@dimen/_3dp"
+        android:padding="@dimen/base_dimen_6"
         android:text="还款方式："
         android:textColor="@color/text_color_blue"
         android:textSize="@dimen/text_size_sub_title"
@@ -170,14 +170,14 @@
         android:background="@color/back_white"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/_3dp"
-        android:paddingTop="@dimen/_3dp"
+        android:paddingBottom="@dimen/base_dimen_6"
+        android:paddingTop="@dimen/base_dimen_6"
         app:layout_constraintTop_toBottomOf="@id/tv_repayment_method">
 
         <RadioButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5dp"
+            android:layout_margin="@dimen/base_dimen_10"
             android:layout_weight="1"
             android:checked="true"
             android:gravity="center"
@@ -187,16 +187,16 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5dp"
+            android:layout_margin="@dimen/base_dimen_10"
             android:layout_weight="1"
-            android:drawablePadding="@dimen/_3dp"
+            android:drawablePadding="@dimen/base_dimen_6"
             android:gravity="center"
             android:textSize="@dimen/text_size_normal" />
 
         <RadioButton
-            android:layout_width="@dimen/_10dp"
+            android:layout_width="@dimen/base_dimen_20"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5dp"
+            android:layout_margin="@dimen/base_dimen_10"
             android:layout_weight="1"
             android:gravity="center"
             android:text="等额本金"

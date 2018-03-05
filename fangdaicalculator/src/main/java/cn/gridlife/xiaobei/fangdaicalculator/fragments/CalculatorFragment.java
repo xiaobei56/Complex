@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -66,6 +68,20 @@ public class CalculatorFragment extends BFragment {
                 switch (position) {
                     case 0:
                         startActivity(new Intent(currentActivity, FangDaiCalculatorActivity.class));
+                        break;
+                    case 1:
+                    {
+//                        AlertDialog alertDialog = builder.create();
+//                        alertDialog.show();
+//                        TextView confirm = inflate.findViewById(R.id.confirm);
+//                        confirm.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                dialogSelectData.getSelectResult(dialogListAdapter.getSelectData());
+//                                alertDialog.dismiss();
+//                            }
+//                        });
+                    }
                 }
             }
 
