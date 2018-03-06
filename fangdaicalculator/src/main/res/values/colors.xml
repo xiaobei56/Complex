@@ -10,8 +10,8 @@
 
     <!--background Color-->
     <color name="back_white">#fff</color>
-    <color name="back_tint">#eee</color>
-    <color name="back_tint_grey">#aaa</color>
+    <color name="back_tint">#bbb</color>
+    <color name="back_tint_grey">#999</color>
 
 
     <!--Main Color-->
