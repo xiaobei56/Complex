@@ -42,16 +42,23 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/base_dimen_5</item>
         <item name="android:layout_marginBottom">@dimen/base_dimen_5</item>
-        <item name="android:background">@color/back_white</item>
         <item name="android:textColor">@color/text_color_blue</item>
         <item name="android:textSize">@dimen/text_size_sub_title</item>
+    </style>
+ <style name="list_item_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/base_dimen_5</item>
+        <item name="android:layout_marginBottom">@dimen/base_dimen_5</item>
+        <item name="android:textColor">@color/text_color_normal</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
     </style>
 
     <style name="radio_group_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">5dp</item>
-        <item name="android:background">@color/back_white</item>
         <item name="android:gravity">center</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingBottom">@dimen/base_dimen_3</item>
@@ -70,13 +77,13 @@
     <style name="div_height_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/base_dimen_10</item>
-        <item name="android:background">@color/back_tint_grey</item>
+        <item name="android:background">@color/back_tint</item>
     </style>
 
     <style name="div_thin_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/base_dimen_2</item>
-        <item name="android:background">@color/back_tint_grey</item>
+        <item name="android:background">@color/back_tint</item>
     </style>
 
 </resources>
