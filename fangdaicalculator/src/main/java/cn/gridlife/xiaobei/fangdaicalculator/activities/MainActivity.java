@@ -35,17 +35,19 @@ public class MainActivity extends BActivity {
 
     @Override
     protected void initData() {
+        initBottomTab();
+    }
+
+    private void initBottomTab() {
         calculatorFragment = new CalculatorFragment();
         communicateFragment = new CommunicateFragment();
         jingPinFragment = new JingPinFragment();
         fragments.add(calculatorFragment);
         fragments.add(jingPinFragment);
         fragments.add(communicateFragment);
-
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnSelectIds[i]));
         }
-
         mDecorView = getWindow().getDecorView();
         mTabLayout_1 = ViewFindUtils.find(mDecorView, R.id.tl_1);
         mTabLayout_1.setTabData(mTabEntities, this, R.id.fl_change, fragments);
@@ -54,12 +56,12 @@ public class MainActivity extends BActivity {
         mTabLayout_1.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                Toast.makeText(MainActivity.this, "onTabSelect", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "onTabSelect", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onTabReselect(int position) {
-                Toast.makeText(MainActivity.this, "onTabReselect", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "onTabReselect", Toast.LENGTH_SHORT).show();
             }
         });
     }

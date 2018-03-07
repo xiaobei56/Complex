@@ -33,7 +33,7 @@ public class CalculatorFragment extends BFragment {
     private RecyclerView recyclerView;
     private CalculatorAdapter adapter;
     private List<CalculatorItem> itemDatas;
-    private String[] titles = {"公积金贷款", "商业贷款", "组合贷款"};
+    private String[] titles = {"房贷计算", "计算器"};
     private Bitmap[] bitmaps;
 
 
@@ -55,9 +55,9 @@ public class CalculatorFragment extends BFragment {
     @Override
     protected void initViewsAndEvents(View view) {
         Bitmap bitmap1 = ((BitmapDrawable) currentActivity.getApplication().getResources().getDrawable(R.mipmap.icon_gongjijin)).getBitmap();
-        Bitmap bitmap2 = ((BitmapDrawable) currentActivity.getApplication().getResources().getDrawable(R.mipmap.icon_shangye)).getBitmap();
+//        Bitmap bitmap2 = ((BitmapDrawable) currentActivity.getApplication().getResources().getDrawable(R.mipmap.icon_shangye)).getBitmap();
         Bitmap bitmap3 = ((BitmapDrawable) currentActivity.getApplication().getResources().getDrawable(R.mipmap.icon_zuhe)).getBitmap();
-        bitmaps = new Bitmap[]{bitmap1, bitmap2, bitmap3};
+        bitmaps = new Bitmap[]{bitmap1, bitmap3};
         recyclerView = (RecyclerView) view.findViewById(R.id.rl_function);
         recyclerView.setLayoutManager(new GridLayoutManager(currentActivity, 3));
         adapter = new CalculatorAdapter(R.layout.calculator_item, getItemDatas());
