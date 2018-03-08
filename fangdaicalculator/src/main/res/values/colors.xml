@@ -17,6 +17,7 @@
     <color name="back_tint">#bbb</color>
     <color name="back_tint_grey">#999</color>
 
+    <color name="div_back">#eeeeee</color>
 
     <!--Main Color-->
     <color name="main_blue">#0099ff</color>

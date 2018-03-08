@@ -7,6 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import butterknife.ButterKnife;
+import cn.gridlife.generallibrary.R;
 
 /**
  * @author BZB
@@ -23,7 +24,7 @@ public abstract class BActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         isFullScreen(isShowTitle(), isShowStatus(), isShowTitleBar());
-        setContentView(getLayoutId());
+        setContentView(getLayoutId()==0? R.layout.error_layout:getLayoutId());
         initData();
         initView();
     }

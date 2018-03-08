@@ -45,14 +45,17 @@
         <item name="android:textColor">@color/text_color_blue</item>
         <item name="android:textSize">@dimen/text_size_normal</item>
     </style>
- <style name="list_item_title">
+
+    <style name="list_item_title">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/_6dp</item>
-        <item name="android:layout_marginBottom">@dimen/_6dp</item>
+        <item name="android:layout_marginTop">@dimen/_10dp</item>
+        <item name="android:layout_marginBottom">@dimen/_10dp</item>
         <item name="android:textColor">@color/text_color_normal</item>
         <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:layout_alignParentStart">true</item>
+
     </style>
 
     <style name="radio_group_style">
@@ -76,14 +79,43 @@
 
     <style name="div_height_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/_10dp</item>
-        <item name="android:background">@color/back_tint</item>
+        <item name="android:layout_height">@dimen/_5dp</item>
+        <item name="android:background">@color/div_back</item>
     </style>
 
     <style name="div_thin_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/_2dp</item>
-        <item name="android:background">@color/back_tint</item>
+        <item name="android:layout_height">@dimen/_1dp</item>
+        <item name="android:background">@color/div_back</item>
+    </style>
+
+    <style name="et_number_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:minWidth">@dimen/_5dp</item>
+        <item name="android:layout_marginBottom">@dimen/_10dp</item>
+        <item name="android:layout_marginRight">@dimen/_80dp</item>
+        <item name="android:layout_marginTop">@dimen/_10dp</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="tv_unit_style">
+        <item name="android:layout_width">@dimen/_75dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_color_grey</item>
+        <item name="android:textSize">@dimen/text_size_little</item>
+        <item name="android:layout_marginTop">@dimen/_12dp</item>
+        <item name="android:layout_marginBottom">@dimen/_8dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+
+    <style name="rl_item_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
     </style>
 
 </resources>
