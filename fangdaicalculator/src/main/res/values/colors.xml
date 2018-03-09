@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4bcffa</color>
-    <color name="colorPrimaryDark">#0fbcf9</color>
+    <color name="colorPrimary">#0071DC</color>
+    <color name="colorPrimaryDark">#00468B</color>
 
     <color name="color_pink">#ef5777</color>
     <color name="color_pink_dark">#f53b57</color>
@@ -9,25 +9,27 @@
     <color name="colorAccent">#ff3f34</color>
     <color name="grey">#666666</color>
     <color name="grey_trans">#99666666</color>
-    <color name="white">#eeeeee</color>
     <color name="div_line">#E8E8E8</color>
 
     <!--background Color-->
     <color name="back_white">#fff</color>
-    <color name="back_tint">#bbb</color>
+    <color name="back_tint_eee">#eee</color>
+    <color name="back_tint_bbb">#bbb</color>
     <color name="back_tint_grey">#999</color>
 
     <color name="div_back">#eeeeee</color>
 
     <!--Main Color-->
-    <color name="main_blue">#0099ff</color>
+    <color name="main_blue">#0071DC</color>
     <color name="main_origin">#ff9000</color>
     <color name="main_beige">#ffc</color>
 
     <!--Text Color-->
     <color name="text_color_normal">#333333</color>
     <color name="text_color_grey">#666666</color>
-    <color name="text_color_white">#666666</color>
+    <color name="text_color_grey_light">#999999</color>
+    <color name="text_color_white">#ffffff</color>
     <color name="text_color_blue">#06f</color>
+    <color name="text_pink">#EC7263</color>
 
 </resources>

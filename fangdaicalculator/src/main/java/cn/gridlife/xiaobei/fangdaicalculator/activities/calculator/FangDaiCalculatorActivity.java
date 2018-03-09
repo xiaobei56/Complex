@@ -39,6 +39,29 @@ public class FangDaiCalculatorActivity extends BActivity {
             mTabLayout1.setTabData(mTitles_1);
             mTabLayout2.setTabData(mTitles_2);
             mTabLayout3.setTabData(mTitles_3);
+
+            mTabLayout1.setOnTabSelectListener(new OnTabSelectListener() {
+                @Override
+                public void onTabSelect(int position) {
+
+                }
+
+                @Override
+                public void onTabReselect(int position) {
+
+                }
+            });
+            mTabLayout2.setOnTabSelectListener(new OnTabSelectListener() {
+                @Override
+                public void onTabSelect(int position) {
+
+                }
+
+                @Override
+                public void onTabReselect(int position) {
+
+                }
+            });
             mTabLayout3.setOnTabSelectListener(new OnTabSelectListener() {
                 @Override
                 public void onTabSelect(int position) {

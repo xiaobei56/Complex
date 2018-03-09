@@ -24,7 +24,7 @@ public class SplashActivity extends BActivity {
 
         tvTimer = (TextView) findViewById(R.id.tv_timer);
 
-        CountDownTimer timer = new CountDownTimer(4000, 1000) {
+        CountDownTimer timer = new CountDownTimer(2000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 tvTimer.setText("跳过（" + (millisUntilFinished / 1000) + "s)");

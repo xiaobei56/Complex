@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">极简房贷计算</string>
+    <string name="str_back">返回</string>
 </resources>

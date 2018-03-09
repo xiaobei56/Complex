@@ -1,17 +1,11 @@
 package cn.gridlife.xiaobei.fangdaicalculator.fragments;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -60,7 +54,7 @@ public class CalculatorFragment extends BFragment {
         bitmaps = new Bitmap[]{bitmap1, bitmap3};
         recyclerView = (RecyclerView) view.findViewById(R.id.rl_function);
         recyclerView.setLayoutManager(new GridLayoutManager(currentActivity, 3));
-        adapter = new CalculatorAdapter(R.layout.calculator_item, getItemDatas());
+        adapter = new CalculatorAdapter(R.layout.item_view_calculator, getItemDatas());
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
