@@ -5,7 +5,10 @@
 
     <color name="color_pink">#ef5777</color>
     <color name="color_pink_dark">#f53b57</color>
-
+    
+    <color name="color_blue">#0fbcf9</color>
+    <color name="color_blue_light">#4bcffa</color>
+    
     <color name="colorAccent">#ff3f34</color>
     <color name="grey">#666666</color>
     <color name="grey_trans">#99666666</color>
@@ -31,5 +34,6 @@
     <color name="text_color_white">#ffffff</color>
     <color name="text_color_blue">#06f</color>
     <color name="text_pink">#EC7263</color>
+    <color name="text_pink_trans">#66EC7263</color>
 
 </resources>

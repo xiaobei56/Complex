@@ -25,8 +25,9 @@ public abstract class BActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         isFullScreen(isShowTitle(), isShowStatus(), isShowTitleBar());
         setContentView(getLayoutId()==0? R.layout.error_layout:getLayoutId());
-        initData();
+
         initView();
+        initData();
     }
 
     /**

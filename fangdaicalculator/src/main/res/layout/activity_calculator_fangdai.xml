@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE android.support.constraint.ConstraintLayout [<!ELEMENT android.support.constraint.ConstraintLayout (android.support.v7.widget.CardView|ScrollView)*><!ATTLIST android.support.constraint.ConstraintLayoutxmlns:android CDATA #REQUIREDxmlns:app CDATA #REQUIREDxmlns:tl CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:background CDATA #REQUIRED><!ELEMENT android.support.v7.widget.CardView (android.support.v7.widget.Toolbar)*><!ATTLIST android.support.v7.widget.CardViewandroid:id CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDapp:cardCornerRadius CDATA #REQUIREDapp:cardElevation CDATA #REQUIREDapp:layout_constraintTop_toTopOf CDATA #REQUIRED><!ELEMENT android.support.v7.widget.Toolbar (ImageButton|TextView)*><!ATTLIST android.support.v7.widget.Toolbarandroid:id CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:background CDATA #REQUIREDapp:contentInsetLeft CDATA #REQUIREDapp:contentInsetStart CDATA #REQUIREDapp:contentInsetStartWithNavigation CDATA #REQUIRED><!ELEMENT ImageButton (#PCDATA)><!ATTLIST ImageButtonandroid:id CDATA #REQUIREDstyle CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:src CDATA #REQUIRED><!ELEMENT TextView (#PCDATA)><!ATTLIST TextViewandroid:ellipsize CDATA #IMPLIEDandroid:gravity CDATA #IMPLIEDandroid:id CDATA #REQUIREDandroid:layout_height CDATA #IMPLIEDandroid:layout_width CDATA #IMPLIEDandroid:maxLines CDATA #IMPLIEDandroid:text CDATA #REQUIREDandroid:textAppearance CDATA #IMPLIEDandroid:textColor CDATA #IMPLIEDandroid:textSize CDATA #IMPLIEDstyle CDATA #IMPLIED><!ELEMENT ScrollView (LinearLayout)*><!ATTLIST ScrollViewandroid:id CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_marginLeft CDATA #REQUIREDandroid:layout_marginRight CDATA #REQUIREDandroid:background CDATA #REQUIREDandroid:orientation CDATA #REQUIREDandroid:scrollbars CDATA #REQUIREDapp:layout_constraintTop_toBottomOf CDATA #REQUIRED><!ELEMENT LinearLayout (RelativeLayout|View|LinearLayout|TextView|EditText|ImageView|Button)*><!ATTLIST LinearLayoutandroid:id CDATA #IMPLIEDandroid:layout_height CDATA #IMPLIEDandroid:layout_width CDATA #IMPLIEDandroid:orientation CDATA #IMPLIEDstyle CDATA #IMPLIED><!ELEMENT RelativeLayout (TextView|com.flyco.tablayout.SegmentTabLayout)*><!ATTLIST RelativeLayoutandroid:layout_height CDATA #REQUIREDandroid:layout_width CDATA #REQUIRED><!ELEMENT com.flyco.tablayout.SegmentTabLayout (#PCDATA)><!ATTLIST com.flyco.tablayout.SegmentTabLayoutandroid:id CDATA #REQUIREDandroid:layout_alignParentEnd CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_marginBottom CDATA #REQUIREDandroid:layout_marginTop CDATA #REQUIREDandroid:layout_toEndOf CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:paddingLeft CDATA #REQUIREDandroid:paddingRight CDATA #REQUIREDtl:tl_bar_color CDATA #REQUIREDtl:tl_indicator_anim_enable CDATA #REQUIREDtl:tl_indicator_color CDATA #REQUIREDtl:tl_indicator_margin_bottom CDATA #REQUIREDtl:tl_indicator_margin_left CDATA #REQUIREDtl:tl_indicator_margin_right CDATA #REQUIREDtl:tl_indicator_margin_top CDATA #REQUIREDtl:tl_textBold CDATA #REQUIRED><!ELEMENT View (#PCDATA)><!ATTLIST Viewstyle CDATA #REQUIRED><!ELEMENT EditText (#PCDATA)><!ATTLIST EditTextandroid:id CDATA #REQUIREDstyle CDATA #REQUIRED><!ELEMENT ImageView (#PCDATA)><!ATTLIST ImageViewandroid:id CDATA #REQUIREDstyle CDATA #REQUIRED><!ELEMENT Button (#PCDATA)><!ATTLIST Buttonandroid:id CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_marginBottom CDATA #REQUIREDandroid:layout_marginLeft CDATA #REQUIREDandroid:layout_marginRight CDATA #REQUIREDandroid:layout_marginTop CDATA #REQUIREDandroid:background CDATA #REQUIREDandroid:text CDATA #REQUIREDandroid:textColor CDATA #REQUIREDandroid:textSize CDATA #REQUIRED>]>
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
@@ -59,7 +59,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -124,6 +123,8 @@
 
             <View style="@style/div_thin_style" />
 
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -155,10 +156,11 @@
             </RelativeLayout>
 
             <View style="@style/div_height_style" />
+            <!--.................................................................................-->
 
-            <!--房屋总额 显示-->
+            <!--公积金 贷款总额 显示-->
             <LinearLayout
-                android:id="@+id/ll_hours_price"
+                android:id="@+id/ll_loan_price_gjj"
                 style="@style/ll_item_style">
 
                 <LinearLayout
@@ -167,12 +169,118 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_hours_price"
+                        android:id="@+id/tv_loan_price_gjj"
+                        style="@style/list_item_title"
+                        android:text="公积金贷款总额：" />
+
+                    <EditText
+                        android:id="@+id/et_loan_price_gjj"
+                        style="@style/et_number_style" />
+
+                    <TextView
+                        android:id="@+id/tv_loan_unit_gjj"
+                        style="@style/tv_unit_style"
+                        android:text="(万元)" />
+                </LinearLayout>
+
+                <View style="@style/div_thin_style" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_lending_rate_gjj"
+                style="@style/ll_item_style">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/list_item_title"
+                        android:text="公积金贷款利率：" />
+
+                    <TextView
+                        android:id="@+id/tv_lending_rate_gjj"
+                        style="@style/tv_style"
+                        android:text="4.9%" />
+
+                    <ImageView
+                        android:id="@+id/iv_arrow_4"
+                        style="@style/iv_arrow_style" />
+                </LinearLayout>
+
+                <View style="@style/div_height_style" />
+            </LinearLayout>
+            <!--商业 贷款总额 显示-->
+            <LinearLayout
+                android:id="@+id/ll_loan_price_sy"
+                style="@style/ll_item_style">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/list_item_title"
+                        android:text="商业贷款总额：" />
+
+                    <EditText
+                        android:id="@+id/et_loan_price_sy"
+                        style="@style/et_number_style" />
+
+                    <TextView
+                        android:id="@+id/tv_loan_unit_sy"
+                        style="@style/tv_unit_style"
+                        android:text="(万元)" />
+                </LinearLayout>
+
+                <View style="@style/div_thin_style" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_lending_rate_sy"
+                style="@style/ll_item_style">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/list_item_title"
+                        android:text="商业贷款利率：" />
+
+                    <TextView
+                        android:id="@+id/tv_lending_rate_sy"
+                        style="@style/tv_style"
+                        android:text="4.9%" />
+
+                    <ImageView
+                        android:id="@+id/iv_arrow_5"
+                        style="@style/iv_arrow_style" />
+                </LinearLayout>
+
+                <View style="@style/div_height_style" />
+            </LinearLayout>
+            <!--.................................................................................-->
+
+            <!--房屋总额 显示-->
+            <LinearLayout
+                android:id="@+id/ll_house_price"
+                style="@style/ll_item_style">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
                         style="@style/list_item_title"
                         android:text="房屋总价：" />
 
                     <EditText
-                        android:id="@+id/et_hours_price"
+                        android:id="@+id/et_house_price"
                         style="@style/et_number_style" />
 
                     <TextView
@@ -195,7 +303,6 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_loan_price"
                         style="@style/list_item_title"
                         android:text="贷款总额：" />
 
@@ -215,7 +322,7 @@
 
             <!--房子面积  ：房屋尺寸-->
             <LinearLayout
-                android:id="@+id/ll_hours_measure"
+                android:id="@+id/ll_house_measure"
                 style="@style/ll_item_style">
 
                 <LinearLayout
@@ -224,16 +331,15 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_hours_measure"
                         style="@style/list_item_title"
                         android:text="房屋面积：" />
 
                     <EditText
-                        android:id="@+id/et_hours_measure"
+                        android:id="@+id/et_house_measure"
                         style="@style/et_number_style" />
 
                     <TextView
-                        android:id="@+id/tv_hours_measure_unit"
+                        android:id="@+id/tv_house_measure_unit"
                         style="@style/tv_unit_style"
                         android:text="(平方米)" />
                 </LinearLayout>
@@ -241,9 +347,9 @@
                 <View style="@style/div_thin_style" />
             </LinearLayout>
 
-
+            <!--每平米价-->
             <LinearLayout
-                android:id="@+id/ll_hours_per_price"
+                android:id="@+id/ll_house_per_price"
                 style="@style/ll_item_style">
 
                 <LinearLayout
@@ -252,23 +358,22 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_hours_per_price"
                         style="@style/list_item_title"
                         android:text="每平米价：" />
 
                     <EditText
-                        android:id="@+id/et_hours_per_price"
+                        android:id="@+id/et_house_per_price"
                         style="@style/et_number_style" />
 
                     <TextView
-                        android:id="@+id/tv_hours_per_price_unit"
+                        android:id="@+id/tv_house_per_price_unit"
                         style="@style/tv_unit_style"
                         android:text="(元/平方米)" />
                 </LinearLayout>
 
                 <View style="@style/div_height_style" />
             </LinearLayout>
-
+            <!--贷款比率-->
             <LinearLayout
                 android:id="@+id/ll_loan_ratio"
                 style="@style/ll_item_style">
@@ -279,12 +384,11 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_loan_ratio"
                         style="@style/list_item_title"
                         android:text="贷款比例：" />
 
                     <TextView
-                        android:id="@+id/tv_loan_ratio_show"
+                        android:id="@+id/tv_loan_ratio"
                         style="@style/tv_style"
                         android:text="70%" />
 
@@ -307,12 +411,11 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_mortgage_year"
                         style="@style/list_item_title"
                         android:text="按揭年数：" />
 
                     <TextView
-                        android:id="@+id/tv_mortgage_year_show"
+                        android:id="@+id/tv_mortgage_year"
                         style="@style/tv_style"
                         android:text="20年（240期）" />
 
@@ -335,12 +438,11 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_lending_rate"
                         style="@style/list_item_title"
                         android:text="贷款利率：" />
 
                     <TextView
-                        android:id="@+id/tv_lending_rate_show"
+                        android:id="@+id/tv_lending_rate"
                         style="@style/tv_style"
                         android:text="4.9%" />
 
@@ -353,18 +455,23 @@
             </LinearLayout>
 
 
-            <Button
-                android:id="@+id/btn_login_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_100dp"
-                android:layout_marginLeft="@dimen/_20dp"
-                android:layout_marginRight="@dimen/_20dp"
-                android:layout_marginTop="@dimen/_10dp"
-                android:background="@drawable/button_bg_selector"
-                android:text="开始计算"
-                android:textColor="@color/text_color_white"
-                android:textSize="@dimen/text_size_normal" />
+
         </LinearLayout>
     </ScrollView>
+    <Button
+        android:id="@+id/btn_login_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20dp"
+        android:layout_marginLeft="@dimen/_20dp"
+        android:layout_marginRight="@dimen/_20dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:background="@drawable/button_bg_selector"
+        android:text="开始计算"
+        android:textColor="@color/text_color_white"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 </android.support.constraint.ConstraintLayout>
