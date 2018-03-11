@@ -21,6 +21,10 @@ public class BApp extends Application {
         initLeakCanary();
         initLog();
         initCrash();
+        initData();
+    }
+
+    protected void initData() {
     }
 
     private void initLeakCanary() {

@@ -1,5 +1,7 @@
 package cn.gridlife.xiaobei.fangdaicalculator;
 
+import com.tencent.bugly.crashreport.CrashReport;
+
 import cn.gridlife.generallibrary.BApp;
 
 /**
@@ -9,4 +11,9 @@ import cn.gridlife.generallibrary.BApp;
  */
 
 public class App extends BApp {
+    @Override
+    protected void initData() {
+//        CrashReport.initCrashReport(getApplicationContext()); Manifest中注册bugly；
+        CrashReport.initCrashReport(getApplicationContext(), "0b67172a39", false);
+    }
 }

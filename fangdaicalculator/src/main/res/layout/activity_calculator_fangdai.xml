@@ -59,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -124,7 +125,6 @@
             <View style="@style/div_thin_style" />
 
 
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -158,112 +158,6 @@
             <View style="@style/div_height_style" />
             <!--.................................................................................-->
 
-            <!--公积金 贷款总额 显示-->
-            <LinearLayout
-                android:id="@+id/ll_loan_price_gjj"
-                style="@style/ll_item_style">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_loan_price_gjj"
-                        style="@style/list_item_title"
-                        android:text="公积金贷款总额：" />
-
-                    <EditText
-                        android:id="@+id/et_loan_price_gjj"
-                        style="@style/et_number_style" />
-
-                    <TextView
-                        android:id="@+id/tv_loan_unit_gjj"
-                        style="@style/tv_unit_style"
-                        android:text="(万元)" />
-                </LinearLayout>
-
-                <View style="@style/div_thin_style" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_lending_rate_gjj"
-                style="@style/ll_item_style">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/list_item_title"
-                        android:text="公积金贷款利率：" />
-
-                    <TextView
-                        android:id="@+id/tv_lending_rate_gjj"
-                        style="@style/tv_style"
-                        android:text="4.9%" />
-
-                    <ImageView
-                        android:id="@+id/iv_arrow_4"
-                        style="@style/iv_arrow_style" />
-                </LinearLayout>
-
-                <View style="@style/div_height_style" />
-            </LinearLayout>
-            <!--商业 贷款总额 显示-->
-            <LinearLayout
-                android:id="@+id/ll_loan_price_sy"
-                style="@style/ll_item_style">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/list_item_title"
-                        android:text="商业贷款总额：" />
-
-                    <EditText
-                        android:id="@+id/et_loan_price_sy"
-                        style="@style/et_number_style" />
-
-                    <TextView
-                        android:id="@+id/tv_loan_unit_sy"
-                        style="@style/tv_unit_style"
-                        android:text="(万元)" />
-                </LinearLayout>
-
-                <View style="@style/div_thin_style" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_lending_rate_sy"
-                style="@style/ll_item_style">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/list_item_title"
-                        android:text="商业贷款利率：" />
-
-                    <TextView
-                        android:id="@+id/tv_lending_rate_sy"
-                        style="@style/tv_style"
-                        android:text="4.9%" />
-
-                    <ImageView
-                        android:id="@+id/iv_arrow_5"
-                        style="@style/iv_arrow_style" />
-                </LinearLayout>
-
-                <View style="@style/div_height_style" />
-            </LinearLayout>
-            <!--.................................................................................-->
 
             <!--房屋总额 显示-->
             <LinearLayout
@@ -332,7 +226,7 @@
 
                     <TextView
                         style="@style/list_item_title"
-                        android:text="房屋面积：" />
+                        android:text="房屋总面积：" />
 
                     <EditText
                         android:id="@+id/et_house_measure"
@@ -359,7 +253,7 @@
 
                     <TextView
                         style="@style/list_item_title"
-                        android:text="每平米价：" />
+                        android:text="每平米单价：" />
 
                     <EditText
                         android:id="@+id/et_house_per_price"
@@ -376,26 +270,48 @@
             <!--贷款比率-->
             <LinearLayout
                 android:id="@+id/ll_loan_ratio"
-                style="@style/ll_item_style">
+                style="@style/ll_item_style"
 
-                <LinearLayout
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/tv_lro"
                         style="@style/list_item_title"
                         android:text="贷款比例：" />
 
+                    <EditText
+                        android:id="@+id/et_loan_ratio"
+                        style="@style/et_select_number_style"
+                        android:layout_toRightOf="@+id/tv_lro"
+                        android:text="70" />
+
+                    <TextView
+                        style="@style/rate_unit_style"
+                        android:layout_toEndOf="@id/et_loan_ratio"
+                        android:text="%" />
+
                     <TextView
                         android:id="@+id/tv_loan_ratio"
-                        style="@style/tv_style"
-                        android:text="70%" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="@dimen/_10dp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_toLeftOf="@id/iv_arrow_1"
+                        android:maxEms="8"
+                        android:text="房屋总价的70%" />
+
 
                     <ImageView
                         android:id="@+id/iv_arrow_1"
                         style="@style/iv_arrow_style" />
-                </LinearLayout>
+                </RelativeLayout>
 
                 <View style="@style/div_thin_style" />
             </LinearLayout>
@@ -403,33 +319,130 @@
 
             <LinearLayout
                 android:id="@+id/ll_mortgage_year"
-                style="@style/ll_item_style">
+                style="@style/ll_item_style"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/tv_my"
                         style="@style/list_item_title"
                         android:text="按揭年数：" />
 
+                    <EditText
+                        android:id="@+id/et_mortgage_year"
+                        style="@style/et_select_number_style"
+                        android:layout_toEndOf="@+id/tv_my"
+                        android:text="20" />
+
+                    <TextView
+                        style="@style/rate_unit_style"
+                        android:layout_toEndOf="@id/et_mortgage_year"
+                        android:text="年" />
+
                     <TextView
                         android:id="@+id/tv_mortgage_year"
-                        style="@style/tv_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="@dimen/_10dp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_toLeftOf="@id/iv_arrow_2"
+                        android:maxEms="8"
                         android:text="20年（240期）" />
 
                     <ImageView
                         android:id="@+id/iv_arrow_2"
                         style="@style/iv_arrow_style" />
+                </RelativeLayout>
+
+                <View style="@style/div_thin_style" />
+                <View
+                    android:id="@+id/div"
+                    style="@style/div_height_style" />
+            </LinearLayout>
+
+
+
+
+            <!--公积金 贷款总额 显示-->
+            <LinearLayout
+                android:id="@+id/ll_loan_price_gjj"
+                style="@style/ll_item_style">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_loan_price_gjj"
+                        style="@style/list_item_title"
+                        android:text="公积金贷总额：" />
+
+                    <EditText
+                        android:id="@+id/et_loan_price_gjj"
+                        style="@style/et_number_style" />
+
+                    <TextView
+                        android:id="@+id/tv_loan_unit_gjj"
+                        style="@style/tv_unit_style"
+                        android:text="(万元)" />
                 </LinearLayout>
 
                 <View style="@style/div_thin_style" />
             </LinearLayout>
 
-
             <LinearLayout
-                android:id="@+id/ll_lending_rate"
+                android:id="@+id/ll_lending_rate_gjj"
+                style="@style/ll_item_style">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_lrg"
+                        style="@style/list_item_title"
+                        android:layout_width="wrap_content"
+                        android:text="公积金利率：" />
+
+                    <EditText
+                        android:id="@+id/et_lending_rate_gjj"
+                        style="@style/et_select_number_style"
+                        android:layout_toRightOf="@+id/tv_lrg"
+                        android:text="3.25" />
+
+                    <TextView
+                        style="@style/rate_unit_style"
+                        android:layout_toEndOf="@id/et_lending_rate_gjj"
+                        android:text="%" />
+
+                    <TextView
+                        android:id="@+id/tv_lending_rate_gjj"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="@dimen/_10dp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_toStartOf="@id/iv_arrow_4"
+                        android:maxEms="8"
+                        android:text="2018年公积金基准贷款利率" />
+
+                    <ImageView
+                        android:id="@+id/iv_arrow_4"
+                        style="@style/iv_arrow_style" />
+                </RelativeLayout>
+
+                <View style="@style/div_height_style" />
+            </LinearLayout>
+            <!--商业 贷款总额 显示-->
+            <LinearLayout
+                android:id="@+id/ll_loan_price_sy"
                 style="@style/ll_item_style">
 
                 <LinearLayout
@@ -439,39 +452,124 @@
 
                     <TextView
                         style="@style/list_item_title"
-                        android:text="贷款利率：" />
+                        android:text="商业贷款总额：" />
+
+                    <EditText
+                        android:id="@+id/et_loan_price_sy"
+                        style="@style/et_number_style" />
 
                     <TextView
-                        android:id="@+id/tv_lending_rate"
-                        style="@style/tv_style"
-                        android:text="4.9%" />
-
-                    <ImageView
-                        android:id="@+id/iv_arrow_3"
-                        style="@style/iv_arrow_style" />
+                        android:id="@+id/tv_loan_unit_sy"
+                        style="@style/tv_unit_style"
+                        android:text="(万元)" />
                 </LinearLayout>
 
                 <View style="@style/div_thin_style" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/ll_lending_rate_sy"
+                style="@style/ll_item_style">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_rs"
+                        style="@style/list_item_title"
+                        android:text="商业贷利率：" />
+
+                    <EditText
+                        android:id="@+id/et_lending_rate_sy"
+                        style="@style/et_select_number_style"
+                        android:layout_toRightOf="@+id/tv_rs"
+                        android:text="4.9" />
+
+                    <TextView
+                        style="@style/rate_unit_style"
+                        android:layout_toEndOf="@id/et_lending_rate_sy"
+                        android:text="%" />
+
+                    <TextView
+                        android:id="@+id/tv_lending_rate_sy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10dp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_toLeftOf="@id/iv_arrow_5"
+                        android:maxEms="8"
+                        android:text="2018年商业基础贷款利率" />
+
+                    <ImageView
+                        android:id="@+id/iv_arrow_5"
+                        style="@style/iv_arrow_style" />
+                </RelativeLayout>
+
+                <View style="@style/div_height_style" />
+            </LinearLayout>
+            <!--.................................................................................-->
+            <!--<LinearLayout-->
+                <!--android:id="@+id/ll_lending_rate"-->
+                <!--style="@style/ll_item_style"-->
+                <!--android:clickable="true"-->
+                <!--android:focusable="true"-->
+                <!--android:foreground="?android:attr/selectableItemBackground">-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_lre"-->
+                        <!--style="@style/list_item_title"-->
+                        <!--android:text="贷款利率：" />-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/et_lending_rate"-->
+                        <!--style="@style/et_select_number_style"-->
+                        <!--android:layout_toEndOf="@+id/tv_lre"-->
+                        <!--android:text="4.9" />-->
+
+                    <!--<TextView-->
+                        <!--style="@style/rate_unit_style"-->
+                        <!--android:layout_toEndOf="@id/et_lending_rate"-->
+                        <!--android:text="%" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_lending_rate"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:layout_marginBottom="@dimen/_10dp"-->
+                        <!--android:layout_marginTop="@dimen/_10dp"-->
+                        <!--android:layout_toStartOf="@id/iv_arrow_3"-->
+                        <!--android:maxEms="8"-->
+                        <!--android:text="2018年最新基准利率(4.9%)" />-->
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/iv_arrow_3"-->
+                        <!--style="@style/iv_arrow_style" />-->
+                <!--</RelativeLayout>-->
+
+                <!--<View style="@style/div_thin_style" />-->
+            <!--</LinearLayout>-->
+            <Button
+                android:id="@+id/btn_login_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_30dp"
+                android:layout_marginLeft="@dimen/_20dp"
+                android:layout_marginRight="@dimen/_20dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:background="@drawable/button_bg_selector"
+                android:text="开始计算"
+                android:textColor="@color/text_color_white"
+                android:textSize="@dimen/text_size_normal"
+                />
 
         </LinearLayout>
     </ScrollView>
-    <Button
-        android:id="@+id/btn_login_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_20dp"
-        android:layout_marginLeft="@dimen/_20dp"
-        android:layout_marginRight="@dimen/_20dp"
-        android:layout_marginTop="@dimen/_10dp"
-        android:background="@drawable/button_bg_selector"
-        android:text="开始计算"
-        android:textColor="@color/text_color_white"
-        android:textSize="@dimen/text_size_normal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+
+
 </android.support.constraint.ConstraintLayout>

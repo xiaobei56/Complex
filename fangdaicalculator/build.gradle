@@ -56,5 +56,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'//拦截器
 //    EventBus
     compile 'org.greenrobot:eventbus:3.1.1'
+// 联动选择
+    compile 'com.contrarywind:Android-PickerView:3.2.7'
+//  bugly
+    compile 'com.tencent.bugly:crashreport:2.3.6'
 
 }

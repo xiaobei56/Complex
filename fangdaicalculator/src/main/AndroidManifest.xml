@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.gridlife.xiaobei.fangdaicalculator">
-
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -20,6 +24,22 @@
         <activity android:name=".activities.MainActivity"
             android:launchMode="singleTask"/>
         <activity android:name=".activities.calculator.FangDaiCalculatorActivity" />
+        <!--&lt;!&ndash; 配置APP ID &ndash;&gt;-->
+        <!--<meta-data-->
+            <!--android:name="BUGLY_APPID"-->
+            <!--android:value="<APP_ID>" />-->
+        <!--&lt;!&ndash; 配置APP版本号 &ndash;&gt;-->
+        <!--<meta-data-->
+            <!--android:name="BUGLY_APP_VERSION"-->
+            <!--android:value="<APP_Version>" />-->
+        <!--&lt;!&ndash; 配置APP渠道号 &ndash;&gt;-->
+        <!--<meta-data-->
+            <!--android:name="BUGLY_APP_CHANNEL"-->
+            <!--android:value="<APP_Channel>" />-->
+        <!--&lt;!&ndash; 配置Bugly调试模式（true或者false）&ndash;&gt;-->
+        <!--<meta-data-->
+            <!--android:name="BUGLY_ENABLE_DEBUG"-->
+            <!--android:value="<isDebug>" />-->
     </application>
 
 </manifest>
