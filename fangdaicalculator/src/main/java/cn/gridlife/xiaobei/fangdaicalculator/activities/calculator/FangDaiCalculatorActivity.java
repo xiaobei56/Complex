@@ -3,11 +3,14 @@ package cn.gridlife.xiaobei.fangdaicalculator.activities.calculator;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -56,32 +59,33 @@ public class FangDaiCalculatorActivity extends BActivity {
     private EditText etHouseMeasure;
     private EditText etHousePerPrice;
     private View div;
-    private TextView tvLendingRatio;
-    private TextView tvLendingRatioGJJ;
-    private TextView tvLendingRatioSY;
-    private TextView tvMorgageYear;
-    //    private TextView tvLenddingRate;
-    private EditText etMortgageYear, etLendingRate, etLendingRateGJJ, etLendingRateSY, etLendingRation;
+    private TextView tvLoanRatio;
+    private TextView tvLendingRateGJJ;
+    private TextView tvLendingRateSY;
+    private TextView tvMortgageYear;
+    private EditText etMortgageYear, etLendingRateGJJ, etLendingRateSY, etLoanRatio;
     private ArrayList<String> options1Items;
     private ArrayList<ArrayList<String>> options2Items;
     private ArrayList<ArrayList<ArrayList<String>>> options3Items;
     private ArrayList<String> list;
+    private Button btnCalculate;
+    int defGJJLessFiveYearPosition, defGJJMoreFiveYearPosition, defSYLessOneYearPosition, defSYLessFiveYearPosition, defSYMoreFiveYearPosition, defMortgagePosition, defLoanRatioPosition;
 
     enum SelectDataType {
 
         MORTGAGE_YEARS,//贷款年限
         LOAN_RATIO,//贷款比例
 
-        LENDING_RATE, //贷款利率
         LENDING_RATE_GJJ,//公积金贷款利率>5年 3.25
         LENDING_RATE_GJJ_LESS_FIVE_YEAR,//公积金贷款利率<5年 2.75
 
         LENDING_RATE_SY,//商业贷款利率>5年  4.90
         LENDING_RATE_SY_LESS_ONE_YEAR,//商业贷款利率<1年  4.35
-        LENDING_RATE_SY_LESS_FIVI_YEAR,//商业贷款利率1 < 年<5年  4.75
+        LENDING_RATE_SY_LESS_FIVE_YEAR,//商业贷款利率1 < 年<5年  4.75
 
 
     }
+
     private int getStatusBarHeight() {
         Resources resources = this.getResources();
         int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
@@ -89,6 +93,7 @@ public class FangDaiCalculatorActivity extends BActivity {
         Log.v("dbw", "Status height:" + height);
         return height;
     }
+
     @Override
     protected void initView() {
         Window window = getWindow();
@@ -105,7 +110,8 @@ public class FangDaiCalculatorActivity extends BActivity {
             systemContent.addView(statusBarView, 0, lp);
         }
 
-    //状态栏 @ 顶部
+
+        //状态栏 @ 顶部
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
 //导航栏 @ 底部
 //    getWindow().
@@ -114,274 +120,314 @@ public class FangDaiCalculatorActivity extends BActivity {
 //这个加在哪个布局，该布局就会相应的向上（配置A）或者向下（配置B）或者向上下（同时配置AB）扩展
 //        android:fitsSystemWindows="true"
 //今天遇到类似问题，已解决。
-    mDecorView =getWindow().getDecorView();
 
-    mTabLayout1 =ViewFindUtils.find(mDecorView,R.id.stl_1);
-    mTabLayout2 =ViewFindUtils.find(mDecorView,R.id.stl_2);
-    mTabLayout3 =ViewFindUtils.find(mDecorView,R.id.stl_3);
+        btnCalculate = (Button) findViewById(R.id.btn_calculate);
+        btnCalculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double dkze=1.0;
+                int mortgageYear = 10;
+                double rate = 4.9;
 
-    div=(View)
+                double totalLX = 0;
+                if (mTabLayout2.getCurrentTab() == 0) {
+                    if (etHousePrice.getText() != null && !etHousePrice.getText().toString().trim().equals("0"))
+                        dkze = Double.parseDouble(etHousePerPrice.getText().toString().trim()) * Double.parseDouble(etLoanRatio.getText().toString().trim());
 
-    findViewById(R.id.div);
-    //组合贷款布局
-    llLendingPriceGJJ =(LinearLayout)
+                } else if (mTabLayout2.getCurrentTab() == 1) {
+                    if (etLendingPrice.getText() != null && !etLendingPrice.getText().toString().trim().equals("0")) {
+                        dkze = Double.parseDouble(etLendingPrice.getText().toString().trim());
+                    }
+                } else {
+                    if (etHouseMeasure.getText() != null && !etHouseMeasure.getText().toString().trim().equals("0") && etHousePerPrice.getText() != null && !etHousePerPrice.getText().toString().trim().equals("0")) {
+                        dkze = Double.parseDouble(etHouseMeasure.getText().toString().trim()) * Double.parseDouble(etHousePerPrice.getText().toString().trim()) * Double.parseDouble(etLoanRatio.getText().toString().trim());
+                    }
+                }
+                mortgageYear = Integer.parseInt(etMortgageYear.getText().toString().trim());
+                rate = Double.parseDouble(etLendingRateGJJ.getText().toString().trim()) / 100;
 
-    findViewById(R.id.ll_loan_price_gjj);
+                totalLX =( ((dkze / mortgageYear / 12)+dkze*(rate/12))+dkze/mortgageYear/12*(1+rate/12))/2*mortgageYear*12-dkze;
+                Toast.makeText(FangDaiCalculatorActivity.this, totalLX+"", Toast.LENGTH_LONG).show();
 
-    llLendingPriceSY =(LinearLayout)
+            }
+        });
+        mDecorView = getWindow().getDecorView();
 
-    findViewById(R.id.ll_loan_price_sy);
+        mTabLayout1 = ViewFindUtils.find(mDecorView, R.id.stl_1);
+        mTabLayout2 = ViewFindUtils.find(mDecorView, R.id.stl_2);
+        mTabLayout3 = ViewFindUtils.find(mDecorView, R.id.stl_3);
 
-    llLendingRateGJJ =(LinearLayout)
+        div = (View)
 
-    findViewById(R.id.ll_lending_rate_gjj);
+                findViewById(R.id.div);
+        //组合贷款布局
+        llLendingPriceGJJ = (LinearLayout) findViewById(R.id.ll_loan_price_gjj);
+        llLendingPriceSY = (LinearLayout) findViewById(R.id.ll_loan_price_sy);
+        llLendingRateGJJ = (LinearLayout) findViewById(R.id.ll_lending_rate_gjj);
+        llLendingRateSY = (LinearLayout) findViewById(R.id.ll_lending_rate_sy);
 
-    llLendingRateSY =(LinearLayout)
+        tvLendingRateGJJ = (TextView) findViewById(R.id.tv_lending_rate_gjj);
+        etLendingRateGJJ = (EditText) findViewById(R.id.et_lending_rate_gjj);
 
-    findViewById(R.id.ll_lending_rate_sy);
+        tvLendingRateSY = (TextView) findViewById(R.id.tv_lending_rate_sy);
+        etLendingRateSY = (EditText) findViewById(R.id.et_lending_rate_sy);
 
-    tvLendingRatioGJJ =(TextView)
+        etLendingPriceGJJ = (EditText) findViewById(R.id.et_loan_price_gjj);
+        etLendingPriceSY = (EditText) findViewById(R.id.et_loan_price_sy);
 
-    findViewById(R.id.tv_loan_ratio);
+        //房屋总额计算
+        llHousePrice = (LinearLayout) findViewById(R.id.ll_house_price);
+        etHousePrice = (EditText) findViewById(R.id.et_house_price);
+        //贷款总额计算
+        llLendingPrice = (LinearLayout) findViewById(R.id.ll_loan_price);
+        etLendingPrice = (EditText) findViewById(R.id.et_loan_price);
+        //房屋面积
+        llHouseMeasure = (LinearLayout) findViewById(R.id.ll_house_measure);
+        llHousePerPrice = (LinearLayout) findViewById(R.id.ll_house_per_price);
+        etHousePerPrice = (EditText) findViewById(R.id.et_house_per_price);
+        etHouseMeasure = (EditText) findViewById(R.id.et_house_measure);
+        //贷款比率
+        llLendingRatio = (LinearLayout) findViewById(R.id.ll_loan_ratio);
+        tvLoanRatio = (TextView) findViewById(R.id.tv_loan_ratio);
+        etLoanRatio = (EditText) findViewById(R.id.et_loan_ratio);
+        //按揭年数
+        llMortgageYear = (LinearLayout) findViewById(R.id.ll_mortgage_year);
+        tvMortgageYear = (TextView) findViewById(R.id.tv_mortgage_year);
+        etMortgageYear = (EditText) findViewById(R.id.et_mortgage_year);
 
-    etLendingRateGJJ =(EditText)
-
-    findViewById(R.id.et_loan_ratio);
-
-    tvLendingRatioSY =(TextView)
-
-    findViewById(R.id.tv_loan_ratio);
-
-    etLendingRateSY =(EditText)
-
-    findViewById(R.id.et_loan_ratio);
-
-    etLendingPriceGJJ =(EditText)
-
-    findViewById(R.id.et_loan_price_gjj);
-
-    etLendingPriceSY =(EditText)
-
-    findViewById(R.id.et_loan_price_sy);
-
-
-    //房屋总额计算
-    llHousePrice =(LinearLayout)
-
-    findViewById(R.id.ll_house_price);
-
-    etHousePrice =(EditText)
-
-    findViewById(R.id.et_house_price);
-
-    //贷款总额计算
-    llLendingPrice =(LinearLayout)
-
-    findViewById(R.id.ll_loan_price);
-
-    etLendingPrice =(EditText)
-
-    findViewById(R.id.et_loan_price);
-    //房屋面积
-    llHouseMeasure =(LinearLayout)
-
-    findViewById(R.id.ll_house_measure);
-
-    llHousePerPrice =(LinearLayout)
-
-    findViewById(R.id.ll_house_per_price);
-
-    etHousePerPrice =(EditText)
-
-    findViewById(R.id.et_house_per_price);
-
-    etHouseMeasure =(EditText)
-
-    findViewById(R.id.et_house_measure);
-
-    //贷款比率
-    llLendingRatio =(LinearLayout)
-
-    findViewById(R.id.ll_loan_ratio);
-
-    tvLendingRatio =(TextView)
-
-    findViewById(R.id.tv_loan_ratio);
-
-    etLendingRate =(EditText)
-
-    findViewById(R.id.et_loan_ratio);
-
-
-    //按揭年数
-    llMortgageYear =(LinearLayout)
-
-    findViewById(R.id.ll_mortgage_year);
-
-    tvMorgageYear =(TextView)
-
-    findViewById(R.id.tv_mortgage_year);
-
-    etMortgageYear =(EditText)
-
-    findViewById(R.id.et_mortgage_year);
-
-    //贷款利率
+        //贷款利率
 //        llLenddingRate = (LinearLayout) findViewById(R.id.ll_lending_rate);
 //        tvLenddingRate = (TextView) findViewById(R.id.et_lending_rate);
 
-    options1Items =new ArrayList<>();
-    options2Items =new ArrayList<>();
-    options3Items =new ArrayList<>();
-    list =new ArrayList<>();
+        options1Items = new ArrayList<>();
+        options2Items = new ArrayList<>();
+        options3Items = new ArrayList<>();
+        list = new ArrayList<>();
 
         llLendingRatio.setOnClickListener(v ->
 
-    ShowPickerView(getRatioList(),SelectDataType.LOAN_RATIO));
+                ShowPickerView(getRatioList(), SelectDataType.LOAN_RATIO));
 
         llMortgageYear.setOnClickListener(v ->
 
-    ShowPickerView(getMortageList(),SelectDataType.MORTGAGE_YEARS));
+                ShowPickerView(getMortgageList(), SelectDataType.MORTGAGE_YEARS));
 
 
 //        llLendingRate.setOnClickListener(v -> ShowPickerView(getRateList((float) 4.9), SelectDataType.LENDING_RATE));
-//        llLendingRateGJJ.setOnClickListener(v -> ShowPickerView(getRateList((float) 3.25), SelectDataType.LENDING_RATE_GJJ));
+        llLendingRateGJJ.setOnClickListener(v -> ShowPickerView(getRateList((float) 3.25), SelectDataType.LENDING_RATE_GJJ));
 //        llLendingRateGJJ.setOnClickListener(v -> ShowPickerView(getRateList((float) 2.75), SelectDataType.LENDING_RATE_GJJ_LESS_FIVE_YEAR));
-        llLendingRateSY.setOnClickListener(v ->
-
-    ShowPickerView(getRateList((float) 4.9),SelectDataType.LENDING_RATE_SY));
-//        llLendingRateSY.setOnClickListener(v -> ShowPickerView(getRateList((float) 4.75), SelectDataType.LENDING_RATE_SY_LESS_FIVI_YEAR));
+        llLendingRateSY.setOnClickListener(v -> ShowPickerView(getRateList((float) 4.9), SelectDataType.LENDING_RATE_SY));
+//        llLendingRateSY.setOnClickListener(v -> ShowPickerView(getRateList((float) 4.75), SelectDataType.LENDING_RATE_SY_LESS_FIVE_YEAR));
 //        llLendingRateSY.setOnClickListener(v -> ShowPickerView(getRateList((float) 4.35), SelectDataType.LENDING_RATE_SY_LESS_ONE_YEAR));
 
-    show_GJN_FWZE();
+        show_GJJ_FWZE();
 
 //        mTabLayout1= (SegmentTabLayout) findViewById(R.id.tl_1);
 //        mTabLayout2= (SegmentTabLayout) findViewById(R.id.tl_2);
 //        mTabLayout3= (SegmentTabLayout) findViewById(R.id.tl_3);
-        if(mTabLayout1 !=null&&mTabLayout2 !=null&&mTabLayout3 !=null)
+        if (mTabLayout1 != null && mTabLayout2 != null && mTabLayout3 != null) {
+            mTabLayout1.setTabData(mTitles_1);
+            mTabLayout2.setTabData(mTitles_2);
+            mTabLayout3.setTabData(mTitles_3);
 
-    {
-        mTabLayout1.setTabData(mTitles_1);
-        mTabLayout2.setTabData(mTitles_2);
-        mTabLayout3.setTabData(mTitles_3);
+            mTabLayout1.setOnTabSelectListener(new OnTabSelectListener() {
+                @Override
+                public void onTabSelect(int position) {
+                    int tab2 = mTabLayout2.getCurrentTab();
+                    int year = Integer.parseInt(etMortgageYear.getText().toString());
+                    initRateData(year);
+                    switch (position) {
+                        case 0:
+                            if (tab2 == 0) {
+                                show_GJJ_FWZE();
+                            } else if (tab2 == 1) {
+                                show_GJJ_DKZE();
+                            } else {
+                                show_GJJ_FWMJ();
+                            }
 
-        mTabLayout1.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                int tab2 = mTabLayout2.getCurrentTab();
-                switch (position) {
-                    case 0:
-
-                        showGJJ();
-                        if (tab2 == 0) {
-                            show_GJN_FWZE();
-                        } else if (tab2 == 1) {
-                            show_GJN_DKZE();
-                        } else {
-                            show_GJN_FWMJ();
-                        }
-                        break;
-                    case 1:
-                        showSY();
-                        if (tab2 == 0) {
-                            show_SY_FWZE();
-                        } else if (tab2 == 1) {
-                            show_SY_DKZE();
-                        } else {
-                            show_SY_FWMJ();
-                        }
-                        break;
-                    case 2:
-                        show_ZU_DKZE();
-                        mTabLayout2.setCurrentTab(1);
-                        break;
-                }
-
-            }
-
-            @Override
-            public void onTabReselect(int position) {
-
-            }
-        });
-        mTabLayout2.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                int tab1 = mTabLayout1.getCurrentTab();
-                switch (position) {
-                    case 0:
-                        if (tab1 == 0)
-                            show_GJN_FWZE();
-                        else if (tab1 == 1) {
-                            show_SY_FWZE();
-                        } else if (mTabLayout1.getCurrentTab() == 2) {
-                            Toast.makeText(FangDaiCalculatorActivity.this, "不可使用组合贷款", Toast.LENGTH_SHORT).show();
-                            mTabLayout1.setCurrentTab(0);
-                            show_GJN_FWZE();
-                        }
-                        break;
-                    case 1:
-                        if (tab1 == 0)
-                            show_GJN_DKZE();
-                        else if (tab1 == 1) {
-                            show_SY_DKZE();
-                        } else if (tab1 == 2) {
+                            break;
+                        case 1:
+                            showSY();
+                            if (tab2 == 0) {
+                                show_SY_FWZE();
+                            } else if (tab2 == 1) {
+                                show_SY_DKZE();
+                            } else {
+                                show_SY_FWMJ();
+                            }
+                            break;
+                        case 2:
                             show_ZU_DKZE();
-                        }
-                        break;
-                    case 2:
-                        if (tab1 == 0)
-                            show_GJN_FWMJ();
-                        else if (tab1 == 1) {
-                            show_SY_FWMJ();
-                        } else if (tab1 == 2) {
-                            Toast.makeText(FangDaiCalculatorActivity.this, "不可使用组合贷款", Toast.LENGTH_SHORT).show();
-                            show_ZU_DKZE();
-                        }
-                        break;
+                            mTabLayout2.setCurrentTab(1);
+                            break;
+                    }
+
+
                 }
+
+                @Override
+                public void onTabReselect(int position) {
+
+                }
+            });
+            mTabLayout2.setOnTabSelectListener(new OnTabSelectListener() {
+                @Override
+                public void onTabSelect(int position) {
+                    int tab1 = mTabLayout1.getCurrentTab();
+                    switch (position) {
+                        case 0:
+                            if (tab1 == 0)
+                                show_GJJ_FWZE();
+                            else if (tab1 == 1) {
+                                show_SY_FWZE();
+                            } else if (mTabLayout1.getCurrentTab() == 2) {
+                                Toast.makeText(FangDaiCalculatorActivity.this, "不可使用组合贷款", Toast.LENGTH_SHORT).show();
+                                mTabLayout1.setCurrentTab(0);
+                                show_GJJ_FWZE();
+                            }
+                            break;
+                        case 1:
+                            if (tab1 == 0)
+                                show_GJJ_DKZE();
+                            else if (tab1 == 1) {
+                                show_SY_DKZE();
+                            } else if (tab1 == 2) {
+                                show_ZU_DKZE();
+                            }
+                            break;
+                        case 2:
+                            if (tab1 == 0)
+                                show_GJJ_FWMJ();
+                            else if (tab1 == 1) {
+                                show_SY_FWMJ();
+                            } else if (tab1 == 2) {
+                                Toast.makeText(FangDaiCalculatorActivity.this, "不可使用组合贷款", Toast.LENGTH_SHORT).show();
+                                show_ZU_DKZE();
+                            }
+                            break;
+                    }
+                }
+
+                @Override
+                public void onTabReselect(int position) {
+
+                }
+            });
+            mTabLayout3.setOnTabSelectListener(new OnTabSelectListener() {
+                @Override
+                public void onTabSelect(int position) {
+                    switch (position) {
+                        case 0:
+//                            TODO
+                            break;
+                        case 1:
+//                            TODO
+                            break;
+                    }
+                }
+
+                @Override
+                public void onTabReselect(int position) {
+                }
+            });
+        } else
+
+        {
+            Toast.makeText(this, "Null", Toast.LENGTH_SHORT).show();
+        }
+        etLoanRatio.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Toast.makeText(FangDaiCalculatorActivity.this, "beforeTextChanged", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onTabReselect(int position) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Toast.makeText(FangDaiCalculatorActivity.this, "onTextChanged", Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void afterTextChanged(Editable s) {
+                Toast.makeText(FangDaiCalculatorActivity.this, "afterTextChanged", Toast.LENGTH_SHORT).show();
             }
         });
-        mTabLayout3.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                switch (position) {
-                    case 0:
-//                            TODO
-                        break;
-                    case 1:
-//                            TODO
-                        break;
-                }
-            }
 
-            @Override
-            public void onTabReselect(int position) {
-            }
-        });
-    } else
-
-    {
-        Toast.makeText(this, "Null", Toast.LENGTH_SHORT).show();
     }
 
-}
+    private void initRateData(int year) {
+        if (year <= 1) {
+            llLendingRateSY.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ShowPickerView(getRateList((float) 4.35), SelectDataType.LENDING_RATE_SY_LESS_ONE_YEAR);
+                    tvLendingRateSY.setText(getRateList((float) 4.35).get(defSYLessOneYearPosition));
+                }
+            });
+            tvLendingRateSY.setText("2018年商业贷款基准利率(4.35%)");
+            etLendingRateSY.setText("4.35");
+            llLendingRateGJJ.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ShowPickerView(getRateList((float) 2.75), SelectDataType.LENDING_RATE_GJJ_LESS_FIVE_YEAR);
+                    tvLendingRateGJJ.setText(getRateList((float) 2.75).get(defGJJLessFiveYearPosition));
+                }
+            });
+            tvLendingRateGJJ.setText("2018年公积金贷款基准利率(2.75%)");
+            etLendingRateGJJ.setText("2.75");
+        } else if (year > 1 && year <= 5) {
+            llLendingRateSY.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ShowPickerView(getRateList((float) 4.75), SelectDataType.LENDING_RATE_SY_LESS_FIVE_YEAR);
+                    tvLendingRateSY.setText(getRateList((float) 4.75).get(defSYLessFiveYearPosition));
+                }
+            });
+            llLendingRateGJJ.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ShowPickerView(getRateList((float) 2.75), SelectDataType.LENDING_RATE_GJJ_LESS_FIVE_YEAR);
+                    tvLendingRateGJJ.setText(getRateList((float) 2.75).get(defGJJLessFiveYearPosition));
+                }
+            });
+            tvLendingRateSY.setText("2018年商业贷款基准利率(4.75%)");
+            etLendingRateSY.setText(" 4.75");
+            tvLendingRateGJJ.setText("2018年公积金贷款基准利率(2.75%)");
+            etLendingRateGJJ.setText("2.75");
+        } else {
+            llLendingRateSY.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ShowPickerView(getRateList((float) 4.9), SelectDataType.LENDING_RATE_SY);
+                    tvLendingRateSY.setText(getRateList((float) 4.9).get(defSYMoreFiveYearPosition));
+                }
+            });
+            llLendingRateGJJ.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ShowPickerView(getRateList((float) 3.25), SelectDataType.LENDING_RATE_GJJ);
+                    tvLendingRateGJJ.setText(getRateList((float) 3.25).get(defGJJMoreFiveYearPosition));
+                }
+            });
+            tvLendingRateSY.setText("2018年商业贷款基准利率(4.9%)");
+            etLendingRateSY.setText(" 4.9");
+            tvLendingRateGJJ.setText("2018年公积金贷款基准利率(3.25)");
+            etLendingRateGJJ.setText("3.25");
+        }
+        llLendingRateGJJ.invalidate();
+        llLendingRateSY.invalidate();
+    }
 
     private ArrayList<String> getRatioList() {
         ArrayList<String> list = new ArrayList<>();
-        for (int i = 0; i <= 100; ) {
+        for (int i = 0; i < 100; ) {
             i += 10;
             list.add("房屋总价的" + i + "%");
         }
         return list;
     }
 
-    private ArrayList<String> getMortageList() {
+    private ArrayList<String> getMortgageList() {
         ArrayList<String> list = new ArrayList<>();
         for (int i = 1; i <= 30; i++) {
             list.add(i + "年（" + i * 12 + "期）");
@@ -403,40 +449,40 @@ public class FangDaiCalculatorActivity extends BActivity {
 //            list.add("基准利率的" + 0.7 + i * 0.5 + "倍" + "(" + 4.9 * (0.7 + i * 0.5) + ")");
         }
         list.remove(6);
-        list.add(6, "2018年最新基准利率(4.9%)");
+        list.add(6, "2018年最新基准利率(" + baseRate + "%)");
         return list;
     }
 
-
     private void ShowPickerView(ArrayList<String> strings, SelectDataType sdt) {// 弹出选择器
-        int defPosition = 1;
+
         switch (sdt) {
             case MORTGAGE_YEARS:
                 //TODO 按揭年数
-                defPosition = Integer.parseInt(SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "MORTGAGE_YEARS", "20"));
-                initPickView(sdt, "按揭年数", tvMorgageYear, etMortgageYear, strings, defPosition);
+                initPickView(sdt, "按揭年数", tvMortgageYear, etMortgageYear, strings, defMortgagePosition);
                 break;
             case LOAN_RATIO:
                 //TODO: 贷款比例
-                break;
-            case LENDING_RATE:
-                //TODO: 贷款利率
-
+                initPickView(sdt, "贷款比例", tvLoanRatio, etLoanRatio, strings, defLoanRatioPosition);
                 break;
             case LENDING_RATE_GJJ:
                 //TODO：公积金 贷款利率
+                initPickView(sdt, "公积金贷款利率", tvLendingRateGJJ, etLendingRateGJJ, strings, defGJJMoreFiveYearPosition);
                 break;
             case LENDING_RATE_GJJ_LESS_FIVE_YEAR:
                 //TODO: <5年 公积金贷款利率
+                initPickView(sdt, "公积金贷款利率(少于5年)", tvLendingRateGJJ, etLendingRateGJJ, strings, defGJJLessFiveYearPosition);
                 break;
             case LENDING_RATE_SY:
                 //TODO: 商业 贷款利率
+                initPickView(sdt, "商业贷款利率", tvLendingRateSY, etLendingRateSY, strings, defSYMoreFiveYearPosition);
                 break;
             case LENDING_RATE_SY_LESS_ONE_YEAR:
                 //TODO: 一年内商业贷款利率
+                initPickView(sdt, "公积金贷款利率(<1年)", tvLendingRateSY, etLendingRateSY, strings, defSYLessOneYearPosition);
                 break;
-            case LENDING_RATE_SY_LESS_FIVI_YEAR:
+            case LENDING_RATE_SY_LESS_FIVE_YEAR:
                 //TODO: 1年—5年商业贷款利率
+                initPickView(sdt, "公积金贷款利率(1-5年)", tvLendingRateSY, etLendingRateSY, strings, defSYLessFiveYearPosition);
                 break;
             default:
                 break;
@@ -455,79 +501,68 @@ public class FangDaiCalculatorActivity extends BActivity {
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
                 //返回的分别是三个级别的选中位置
                 String tx = strings.get(options1);
+                String temp;
+                Pattern p;
+                Matcher m;
                 tvDetail.setText(tx);
-                String regEx = "[^0-9]";
+                String regEx = "[^0-9|.]";
                 switch (sdt) {
                     case MORTGAGE_YEARS:
                         //TODO 按揭年数
-                        String temp1 = tx.substring(0, 2);
-                        Pattern p = Pattern.compile(regEx);
-                        Matcher m = p.matcher(temp1);
+                        temp = tx.substring(0, 2);
+                        p = Pattern.compile(regEx);
+                        m = p.matcher(temp);
                         num.setText(m.replaceAll(""));
                         SharePreferenceUtil.setConfigValue(FangDaiCalculatorActivity.this, "MORTGAGE_YEARS", options1 + "");
-                        if (options1 <= 1) {
-                            Toast.makeText(FangDaiCalculatorActivity.this, "" + options1, Toast.LENGTH_SHORT).show();
-                            llLendingRateGJJ.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    ShowPickerView(getRateList((float) 2.75), SelectDataType.LENDING_RATE_GJJ_LESS_FIVE_YEAR);
-                                }
-                            });
-                            llLendingRateSY.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    ShowPickerView(getRateList((float) 4.35), SelectDataType.LENDING_RATE_SY_LESS_ONE_YEAR);
-                                }
-                            });
-                        } else if (options1 > 1 && options1 <= 5) {
-                            llLendingRateGJJ.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    ShowPickerView(getRateList((float) 2.75), SelectDataType.LENDING_RATE_GJJ_LESS_FIVE_YEAR);
-                                }
-                            });
-                            llLendingRateSY.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    ShowPickerView(getRateList((float) 4.75), SelectDataType.LENDING_RATE_SY_LESS_FIVI_YEAR);
-                                }
-                            });
-                        } else {
-                            llLendingRateGJJ.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    ShowPickerView(getRateList((float) 3.25), SelectDataType.LENDING_RATE_GJJ_LESS_FIVE_YEAR);
-                                }
-                            });
-                            llLendingRateSY.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    ShowPickerView(getRateList((float) 4.9), SelectDataType.LENDING_RATE_SY_LESS_FIVI_YEAR);
-                                }
-                            });
-                        }
+                        initRateData(options1 + 1);
                         break;
                     case LOAN_RATIO:
                         //TODO: 贷款比例
-                        String temp2 = tx.substring(tx.length() - 5, tx.length());
-                        Pattern p2 = Pattern.compile(regEx);
-                        Matcher m2 = p2.matcher(temp2);
-                        num.setText(m2.replaceAll(""));
+                        temp = tx.substring(tx.length() - 5, tx.length());
+                        p = Pattern.compile(regEx);
+                        m = p.matcher(temp);
+                        num.setText(m.replaceAll(""));
+                        SharePreferenceUtil.setConfigValue(FangDaiCalculatorActivity.this, options1 + "", "LOAN_RATIO");
                         break;
                     case LENDING_RATE_GJJ:
                         //TODO：公积金 贷款利率
+                        temp = tx.substring(tx.length() - 8, tx.length());
+                        p = Pattern.compile(regEx);
+                        m = p.matcher(temp);
+                        num.setText(m.replaceAll(""));
+                        SharePreferenceUtil.setConfigValue(FangDaiCalculatorActivity.this, options1 + "", "LENDING_RATE_GJJ");
                         break;
                     case LENDING_RATE_GJJ_LESS_FIVE_YEAR:
                         //TODO: <5年 公积金贷款利率
+                        temp = tx.substring(tx.length() - 8, tx.length());
+                        p = Pattern.compile(regEx);
+                        m = p.matcher(temp);
+                        num.setText(m.replaceAll(""));
+                        SharePreferenceUtil.setConfigValue(FangDaiCalculatorActivity.this, options1 + "", "LENDING_RATE_GJJ_LESS_FIVE_YEAR");
                         break;
                     case LENDING_RATE_SY:
                         //TODO: 商业 贷款利率
+                        temp = tx.substring(tx.length() - 8, tx.length());
+                        p = Pattern.compile(regEx);
+                        m = p.matcher(temp);
+                        num.setText(m.replaceAll(""));
+                        SharePreferenceUtil.setConfigValue(FangDaiCalculatorActivity.this, options1 + "", "LENDING_RATE_SY");
                         break;
                     case LENDING_RATE_SY_LESS_ONE_YEAR:
                         //TODO: 一年内商业贷款利率
+                        temp = tx.substring(tx.length() - 8, tx.length());
+                        p = Pattern.compile(regEx);
+                        m = p.matcher(temp);
+                        num.setText(m.replaceAll(""));
+                        SharePreferenceUtil.setConfigValue(FangDaiCalculatorActivity.this, options1 + "", "LENDING_RATE_SY_LESS_ONE_YEAR");
                         break;
-                    case LENDING_RATE_SY_LESS_FIVI_YEAR:
+                    case LENDING_RATE_SY_LESS_FIVE_YEAR:
                         //TODO: 1年—5年商业贷款利率
+                        temp = tx.substring(tx.length() - 8, tx.length());
+                        p = Pattern.compile(regEx);
+                        m = p.matcher(temp);
+                        num.setText(m.replaceAll(""));
+                        SharePreferenceUtil.setConfigValue(FangDaiCalculatorActivity.this, options1 + "", "LENDING_RATE_SY_LESS_FIVE_YEAR");
                         break;
                     default:
                         break;
@@ -560,7 +595,7 @@ public class FangDaiCalculatorActivity extends BActivity {
     /**
      * 公积金+ 房屋总额
      */
-    private void show_GJN_FWZE() {
+    private void show_GJJ_FWZE() {
 //        房屋总价
         llHousePrice.setVisibility(View.VISIBLE);
         llLendingPrice.setVisibility(View.GONE);
@@ -573,12 +608,13 @@ public class FangDaiCalculatorActivity extends BActivity {
         llLendingPriceSY.setVisibility(View.GONE);
         llLendingRateSY.setVisibility(View.GONE);
         div.setVisibility(View.GONE);
+
     }
 
     /**
      * 公积金+ 贷款总额
      */
-    private void show_GJN_DKZE() {
+    private void show_GJJ_DKZE() {
         llHousePrice.setVisibility(View.GONE);
         llLendingPrice.setVisibility(View.VISIBLE);
         llHouseMeasure.setVisibility(View.GONE);
@@ -595,7 +631,7 @@ public class FangDaiCalculatorActivity extends BActivity {
     /**
      * 公积金+ 房屋面积
      */
-    private void show_GJN_FWMJ() {
+    private void show_GJJ_FWMJ() {
         llHousePrice.setVisibility(View.GONE);
         llLendingPrice.setVisibility(View.GONE);
 
@@ -687,6 +723,14 @@ public class FangDaiCalculatorActivity extends BActivity {
 
     @Override
     protected void initData() {
+        defGJJLessFiveYearPosition = Integer.parseInt(SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "LENDING_RATE_GJJ_LESS_FIVE_YEAR", "6") == null ? "6" : SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "LENDING_RATE_GJJ_LESS_FIVE_YEAR", "6"));
+        defGJJMoreFiveYearPosition = Integer.parseInt(SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "LENDING_RATE_GJJ", "6") == null ? "6" : SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "LENDING_RATE_GJJ", "6"));
+        defSYLessOneYearPosition = Integer.parseInt(SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "LENDING_RATE_SY_LESS_ONE_YEAR", "6") == null ? "6" : SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "LENDING_RATE_SY_LESS_ONE_YEAR", "6"));
+        defSYLessFiveYearPosition = Integer.parseInt(SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "LENDING_RATE_SY_LESS_FIVE_YEAR", "6") == null ? "6" : SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "LENDING_RATE_SY_LESS_FIVE_YEAR", "6"));
+        defSYMoreFiveYearPosition = Integer.parseInt(SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "MORTGAGE_YEARS", "6") == null ? "6" : SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "MORTGAGE_YEARS", "6"));
+        defMortgagePosition = Integer.parseInt(SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "MORTGAGE_YEARS", "19") == null ? "19" : SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "MORTGAGE_YEARS", "19"));
+        defLoanRatioPosition = Integer.parseInt(SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "LOAN_RATIO", "6") == null ? "6" : SharePreferenceUtil.getConfigValue(FangDaiCalculatorActivity.this, "LOAN_RATIO", "6"));
+
 
     }
 

@@ -556,7 +556,7 @@
                 <!--<View style="@style/div_thin_style" />-->
             <!--</LinearLayout>-->
             <Button
-                android:id="@+id/btn_login_login"
+                android:id="@+id/btn_calculate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_30dp"
