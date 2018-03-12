@@ -2,8 +2,14 @@ package cn.gridlife.xiaobei.fangdaicalculator.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
+import android.os.Build;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -35,9 +41,28 @@ public class MainActivity extends BActivity {
 
     @Override
     protected void initData() {
+        Window window = getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+        } else {
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            ViewGroup systemContent = findViewById(android.R.id.content);
+            View statusBarView = new View(this);
+            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight());
+            statusBarView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            systemContent.getChildAt(0).setFitsSystemWindows(true);
+            systemContent.addView(statusBarView, 0, lp);
+        }
         initBottomTab();
     }
-
+    private int getStatusBarHeight() {
+        Resources resources = this.getResources();
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen","android");
+        int height = resources.getDimensionPixelSize(resourceId);
+        Log.v("dbw", "Status height:" + height);
+        return height;
+    }
     private void initBottomTab() {
         calculatorFragment = new CalculatorFragment();
         communicateFragment = new CommunicateFragment();

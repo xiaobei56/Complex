@@ -22,6 +22,6 @@
     <!--&lt;!&ndash; 背景颜色渐变 &ndash;&gt;-->
     <gradient
         android:angle="270"
-        android:startColor="@color/color_blue"
+        android:startColor="@color/colorPrimary"
         android:endColor="@color/colorPrimary" />
 </shape>

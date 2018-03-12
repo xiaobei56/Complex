@@ -2,10 +2,14 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">?attr/statusBarBackground</item>
+        <!--&lt;!&ndash;设置状态栏为透明&ndash;&gt;-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <!--&lt;!&ndash;导航栏不透明&ndash;&gt;-->
+        <!--<item name="android:windowTranslucentNavigation">false</item>-->
+        <!--&lt;!&ndash;设置状态栏为透明色&ndash;&gt;-->
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+        <!--&lt;!&ndash;导航栏为黑色&ndash;&gt;-->
+        <!--<item name="android:navigationBarColor">@android:color/black</item>-->
+
     </style>
 </resources>

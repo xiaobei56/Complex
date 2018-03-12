@@ -36,4 +36,6 @@
     <color name="text_pink">#EC7263</color>
     <color name="text_pink_trans">#66EC7263</color>
 
+
+    <color name="transparent">#0fff</color>
 </resources>
