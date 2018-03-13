@@ -1,5 +1,7 @@
 package cn.gridlife.xiaobei.fangdaicalculator.activities.calculator;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
@@ -20,12 +22,14 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.gridlife.generallibrary.activities.BActivity;
 import cn.gridlife.xiaobei.fangdaicalculator.R;
+import cn.gridlife.xiaobei.fangdaicalculator.utils.ArithmeticUtils;
 import cn.gridlife.xiaobei.fangdaicalculator.utils.SharePreferenceUtil;
 import cn.gridlife.xiaobei.fangdaicalculator.utils.ViewFindUtils;
 
@@ -70,6 +74,14 @@ public class FangDaiCalculatorActivity extends BActivity {
     private ArrayList<String> list;
     private Button btnCalculate;
     int defGJJLessFiveYearPosition, defGJJMoreFiveYearPosition, defSYLessOneYearPosition, defSYLessFiveYearPosition, defSYMoreFiveYearPosition, defMortgagePosition, defLoanRatioPosition;
+
+    boolean showGjjFwze = false;
+    boolean showGjjDkze = false;
+    boolean showGjjFwmj = false;
+    boolean showSyFwze = false;
+    boolean showSyDkze = false;
+    boolean showSyFwmj = false;
+    boolean showZH = false;
 
     enum SelectDataType {
 
@@ -125,32 +137,52 @@ public class FangDaiCalculatorActivity extends BActivity {
         btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double dkze=1.0;
-                int mortgageYear = 10;
-                double rate = 4.9;
+//                boolean showGjjFwze=false;
+//                boolean showGjjDkze=false;
+//                boolean showGjjFwmj=false;
+//                boolean showSyFwze=false;
+//                boolean showSyDkze=false;
+//                boolean showSyFwmj=false;
+//                boolean showZH=false;
+                double fwze = checkViewText(etHousePrice);
+                double dkze = checkViewText(etLendingPrice);
+                double fwmj = checkViewText(etHouseMeasure);
+                double mpmdj = checkViewText(etHousePerPrice);
+                double dkbl = checkViewText(etLoanRatio);
+                double ajns = checkViewText(etMortgageYear);
+                double gjjdze = checkViewText(etLendingPriceGJJ);
+                double gjjlv = checkViewText(etLendingRateGJJ);
+                double sydkze = checkViewText(etLendingPriceSY);
+                double sydklv = checkViewText(etLendingRateSY);
 
-                double totalLX = 0;
-                if (mTabLayout2.getCurrentTab() == 0) {
-                    if (etHousePrice.getText() != null && !etHousePrice.getText().toString().trim().equals("0"))
-                        dkze = Double.parseDouble(etHousePerPrice.getText().toString().trim()) * Double.parseDouble(etLoanRatio.getText().toString().trim());
+                double ylvgjj = ArithmeticUtils.p(gjjlv/100, 12, 8);
+                double ylvsy = ArithmeticUtils.p(sydklv/100, 12, 8);
+                int months = (int) (ajns * 12);
+                //按房屋总额
+                double daikuanzonge_1 = ArithmeticUtils.mul(fwze* 10000, dkbl / 100) ;
+                //按贷款总额
+                double daikuanzonge_2 = dkze * 10000;
+                //按房屋面积
+                double daikuanzonge_3 = ArithmeticUtils.mul(dkbl / 100, ArithmeticUtils.mul(fwmj, mpmdj));
+                ///////////////////////////////////////////////////////////////////////////
+                // 等额本息-公积金
+                ///////////////////////////////////////////////////////////////////////////
+                //每月月供额
+                double myyge = ArithmeticUtils
+                        .p(ArithmeticUtils.mul(     ArithmeticUtils.mul(daikuanzonge_1, ylvgjj), ArithmeticUtils.pow(1 + ylvgjj, months).doubleValue()    ), ArithmeticUtils.pow( 1 + ylvgjj,  months).doubleValue() - 1);
+                Toast.makeText(FangDaiCalculatorActivity.this, myyge + "", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(FangDaiCalculatorActivity.this)
+                        .setTitle("月还款额")
+                        .setMessage(myyge + "").setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                } else if (mTabLayout2.getCurrentTab() == 1) {
-                    if (etLendingPrice.getText() != null && !etLendingPrice.getText().toString().trim().equals("0")) {
-                        dkze = Double.parseDouble(etLendingPrice.getText().toString().trim());
-                    }
-                } else {
-                    if (etHouseMeasure.getText() != null && !etHouseMeasure.getText().toString().trim().equals("0") && etHousePerPrice.getText() != null && !etHousePerPrice.getText().toString().trim().equals("0")) {
-                        dkze = Double.parseDouble(etHouseMeasure.getText().toString().trim()) * Double.parseDouble(etHousePerPrice.getText().toString().trim()) * Double.parseDouble(etLoanRatio.getText().toString().trim());
-                    }
-                }
-                mortgageYear = Integer.parseInt(etMortgageYear.getText().toString().trim());
-                rate = Double.parseDouble(etLendingRateGJJ.getText().toString().trim()) / 100;
-
-                totalLX =( ((dkze / mortgageYear / 12)+dkze*(rate/12))+dkze/mortgageYear/12*(1+rate/12))/2*mortgageYear*12-dkze;
-                Toast.makeText(FangDaiCalculatorActivity.this, totalLX+"", Toast.LENGTH_LONG).show();
-
+                            }
+                        });
+                builder.show();
             }
         });
+
         mDecorView = getWindow().getDecorView();
 
         mTabLayout1 = ViewFindUtils.find(mDecorView, R.id.stl_1);
@@ -352,7 +384,13 @@ public class FangDaiCalculatorActivity extends BActivity {
                 Toast.makeText(FangDaiCalculatorActivity.this, "afterTextChanged", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    private Double checkViewText(View view) {
+        String text;
+        if (((EditText) view).getText() != null && !((TextView) view).getText().toString().equals("")) {
+            return Double.parseDouble(((TextView) view).getText().toString().trim());
+        } else return Double.parseDouble("0");
     }
 
     private void initRateData(int year) {
@@ -595,6 +633,7 @@ public class FangDaiCalculatorActivity extends BActivity {
     /**
      * 公积金+ 房屋总额
      */
+
     private void show_GJJ_FWZE() {
 //        房屋总价
         llHousePrice.setVisibility(View.VISIBLE);
@@ -608,6 +647,13 @@ public class FangDaiCalculatorActivity extends BActivity {
         llLendingPriceSY.setVisibility(View.GONE);
         llLendingRateSY.setVisibility(View.GONE);
         div.setVisibility(View.GONE);
+        showGjjFwze = true;
+        showGjjDkze = false;
+        showGjjFwmj = false;
+        showSyFwze = false;
+        showSyDkze = false;
+        showSyFwmj = false;
+        showZH = false;
 
     }
 
@@ -626,6 +672,13 @@ public class FangDaiCalculatorActivity extends BActivity {
         llLendingPriceSY.setVisibility(View.GONE);
         llLendingRateSY.setVisibility(View.GONE);
         div.setVisibility(View.GONE);
+        showGjjFwze = false;
+        showGjjDkze = true;
+        showGjjFwmj = false;
+        showSyFwze = false;
+        showSyDkze = false;
+        showSyFwmj = false;
+        showZH = false;
     }
 
     /**
@@ -645,6 +698,13 @@ public class FangDaiCalculatorActivity extends BActivity {
         llLendingPriceSY.setVisibility(View.GONE);
         llLendingRateSY.setVisibility(View.GONE);
         div.setVisibility(View.GONE);
+        showGjjFwze = false;
+        showGjjDkze = false;
+        showGjjFwmj = true;
+        showSyFwze = false;
+        showSyDkze = false;
+        showSyFwmj = false;
+        showZH = false;
     }
 
     /**
@@ -662,6 +722,13 @@ public class FangDaiCalculatorActivity extends BActivity {
         llLendingPriceSY.setVisibility(View.GONE);
         llLendingRateSY.setVisibility(View.VISIBLE);
         div.setVisibility(View.GONE);
+        showGjjFwze = false;
+        showGjjDkze = false;
+        showGjjFwmj = false;
+        showSyFwze = true;
+        showSyDkze = false;
+        showSyFwmj = false;
+        showZH = false;
     }
 
     /**
@@ -679,6 +746,14 @@ public class FangDaiCalculatorActivity extends BActivity {
         llLendingPriceSY.setVisibility(View.GONE);
         llLendingRateSY.setVisibility(View.VISIBLE);
         div.setVisibility(View.GONE);
+
+        showGjjFwze = false;
+        showGjjDkze = false;
+        showGjjFwmj = false;
+        showSyFwze = false;
+        showSyDkze = true;
+        showSyFwmj = false;
+        showZH = false;
     }
 
     /**
@@ -698,6 +773,14 @@ public class FangDaiCalculatorActivity extends BActivity {
         llLendingPriceSY.setVisibility(View.GONE);
         llLendingRateSY.setVisibility(View.VISIBLE);
         div.setVisibility(View.GONE);
+
+        showGjjFwze = false;
+        showGjjDkze = false;
+        showGjjFwmj = false;
+        showSyFwze = false;
+        showSyDkze = false;
+        showSyFwmj = true;
+        showZH = false;
     }
 
     /**
@@ -718,6 +801,14 @@ public class FangDaiCalculatorActivity extends BActivity {
         llLendingPriceSY.setVisibility(View.VISIBLE);
         llLendingRateSY.setVisibility(View.VISIBLE);
         div.setVisibility(View.VISIBLE);
+
+        showGjjFwze = false;
+        showGjjDkze = false;
+        showGjjFwmj = false;
+        showSyFwze = false;
+        showSyDkze = false;
+        showSyFwmj = false;
+        showZH = true;
     }
 
 
