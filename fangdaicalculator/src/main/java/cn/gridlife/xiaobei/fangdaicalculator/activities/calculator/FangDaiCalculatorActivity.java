@@ -168,15 +168,34 @@ public class FangDaiCalculatorActivity extends BActivity {
                 // 等额本息-公积金
                 ///////////////////////////////////////////////////////////////////////////
                 //每月月供额
-                double myyge = ArithmeticUtils
-                        .p(ArithmeticUtils.mul(     ArithmeticUtils.mul(daikuanzonge_1, ylvgjj), ArithmeticUtils.pow(1 + ylvgjj, months).doubleValue()    ), ArithmeticUtils.pow( 1 + ylvgjj,  months).doubleValue() - 1);
-                Toast.makeText(FangDaiCalculatorActivity.this, myyge + "", Toast.LENGTH_SHORT).show();
+                double myyge = ArithmeticUtils.p(ArithmeticUtils.mul(     ArithmeticUtils.mul(daikuanzonge_1, ylvgjj), ArithmeticUtils.pow(1 + ylvgjj, months).doubleValue()    ), ArithmeticUtils.pow( 1 + ylvgjj,  months).doubleValue() - 1,2);
+                //总还款额
+                double zhke = ArithmeticUtils.p(ArithmeticUtils.mul(     ArithmeticUtils.mul(daikuanzonge_1, ylvgjj), ArithmeticUtils.pow(1 + ylvgjj, months).doubleValue()    ), ArithmeticUtils.pow( 1 + ylvgjj,  months).doubleValue() - 1,2)*months;
+                //支付利息
+                double zflx=zhke-daikuanzonge_1;
+
+                //分期数 months
+
+                ///////////////////////////////////////////////////////////////////////////
+                // 等额本金-公积金
+                ///////////////////////////////////////////////////////////////////////////
+                //每月还本金
+                double myhbj=ArithmeticUtils.p(daikuanzonge_1,months);
+                //第一个月还款金额
+                double dygyhkje=myhbj+ArithmeticUtils.mul(daikuanzonge_1,ylvgjj);
+                //每月减少
+                double myjs=ArithmeticUtils.mul(myhbj,ylvgjj);
+
+                //等额本金贷款总利息
+                double debjdkzlx=((myhbj+ArithmeticUtils.mul(daikuanzonge_1,ylvgjj))+ArithmeticUtils.mul(myhbj,1+ylvgjj))/2/months-daikuanzonge_1;
+
+
+                Toast.makeText(FangDaiCalculatorActivity.this, ""+zhke+"  ---" + debjdkzlx, Toast.LENGTH_LONG).show();
                 AlertDialog.Builder builder = new AlertDialog.Builder(FangDaiCalculatorActivity.this)
                         .setTitle("月还款额")
-                        .setMessage(myyge + "").setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                        .setMessage("等额本息月还款额："+myyge + "  "+"等额本金总利息："+zhke).setPositiveButton("知道了", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         });
                 builder.show();
