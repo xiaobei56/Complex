@@ -187,18 +187,19 @@ public class FangDaiCalculatorActivity extends BActivity {
                 double myjs=ArithmeticUtils.mul(myhbj,ylvgjj);
 
                 //等额本金贷款总利息
-                double debjdkzlx=((myhbj+ArithmeticUtils.mul(daikuanzonge_1,ylvgjj))+ArithmeticUtils.mul(myhbj,1+ylvgjj))/2/months-daikuanzonge_1;
+                double debjdkzlx=(myjs+ArithmeticUtils.mul(daikuanzonge_1,ylvgjj))*months/2;
 
 
                 Toast.makeText(FangDaiCalculatorActivity.this, ""+zhke+"  ---" + debjdkzlx, Toast.LENGTH_LONG).show();
                 AlertDialog.Builder builder = new AlertDialog.Builder(FangDaiCalculatorActivity.this)
                         .setTitle("月还款额")
-                        .setMessage("等额本息月还款额："+myyge + "  "+"等额本金总利息："+zhke).setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+                        .setMessage("等额本息月还款额："+myyge + "  "+"等额本金总利息："+debjdkzlx+"每月还本金"+myhbj+"  每月减少"+myjs+"  第一个月还款金额"+dygyhkje).setPositiveButton("知道了", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         });
                 builder.show();
+
             }
         });
 
