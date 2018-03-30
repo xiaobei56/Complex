@@ -7,9 +7,15 @@
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="fill_parent"
+    <!--<ListView-->
+        <!--android:id="@+id/list"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:cacheColorHint="#00000000"></ListView>-->
+    <!---->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_list"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:cacheColorHint="#00000000"></ListView>
+        />
 </LinearLayout>
