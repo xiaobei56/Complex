@@ -1,1 +1,3 @@
 include ':app', ':BzbLibrary', ':testmodule', ':myapps', ':gametools', ':FlycoTabLayout_Lib', ':fangdaicalculator', ':pickerview', ':bzbtoolsapp', ':downloadcourse'
+//, ':jnidemo'
+
