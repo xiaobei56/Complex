@@ -1,4 +1,4 @@
-package cn.gridlife.xiaobei.bzbtoolsapp.functions;
+package cn.gridlife.xiaobei.bzbtoolsapp.functions.one;
 
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
@@ -54,7 +54,7 @@ public class CandidatePopUpWindow extends PopupWindow {
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView.addItemDecoration(new DividerItemDecoration(mContext, LinearLayout.HORIZONTAL));
         //设置自定义Adapter
-
+        this.setFocusable(false);
         selectPopupWindow = new PopupWindow(loginWindow, width, LinearLayout.LayoutParams.WRAP_CONTENT, true);
 
         selectPopupWindow.setOutsideTouchable(true);

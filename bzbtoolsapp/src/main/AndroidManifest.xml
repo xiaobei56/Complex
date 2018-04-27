@@ -16,7 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".functions.Func_one" />
+        <activity android:name=".functions.one.Func_one" />
+        <activity
+            android:name=".functions.two.FunTwoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

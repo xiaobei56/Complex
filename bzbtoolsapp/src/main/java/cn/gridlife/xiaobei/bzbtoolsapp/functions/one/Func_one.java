@@ -1,4 +1,4 @@
-package cn.gridlife.xiaobei.bzbtoolsapp.functions;
+package cn.gridlife.xiaobei.bzbtoolsapp.functions.one;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -35,8 +35,6 @@ public class Func_one extends Activity {
         itemBeans.add(new CandidatePopUpWindow.ItemBean("abcfdsfab"));
 
 
-
-
         editText.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -46,6 +44,7 @@ public class Func_one extends Activity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
             }
 
             @Override
@@ -53,6 +52,8 @@ public class Func_one extends Activity {
                 CandidatePopUpWindow candidatePopUpWindow = new CandidatePopUpWindow(Func_one.this);
                 candidatePopUpWindow.initPopupWindow(editText.getWidth());
                 candidatePopUpWindow.refreshData(editText, itemBeans, s.toString());
+
+                editText.setSelection(s.length());
             }
         });
     }

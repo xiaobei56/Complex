@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import cn.gridlife.xiaobei.bzbtoolsapp.functions.Func_one;
+import cn.gridlife.xiaobei.bzbtoolsapp.functions.one.Func_one;
+import cn.gridlife.xiaobei.bzbtoolsapp.functions.two.FunTwoActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,5 +25,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_1:
                 startActivity(new Intent(this, Func_one.class));
         }
+    }
+
+    /**
+     * 滑动隐藏布局
+     * @param view
+     */
+    public void funTwo(View view) {
+        startActivity(new Intent(this, FunTwoActivity.class));
     }
 }
